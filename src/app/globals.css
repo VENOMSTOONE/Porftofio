@@ -2,62 +2,92 @@
 
 @layer base {
   :root {
-    --bg-charcoal: #101112;
-    --surface-charcoal: #191a1c;
-    --surface-elevated: #222427;
+    --bg-noir: #070809;
+    --surface-noir: #0f1012;
+    --surface-elevated: #16181b;
     --text-primary: #f3f0e9;
-    --text-muted: #a6a6a2;
+    --text-muted: #8e9094;
     --accent-amber: #d9a45b;
-    --border-subtle: rgba(243, 240, 233, 0.08);
+    --accent-amber-glow: rgba(217, 164, 91, 0.25);
+    --border-hairline: rgba(243, 240, 233, 0.12);
   }
 
   html {
     scroll-behavior: smooth;
-    background-color: #101112;
+    background-color: #070809;
     color: #f3f0e9;
   }
 
   body {
-    background-color: #101112;
+    background-color: #070809;
     color: #f3f0e9;
     overflow-x: hidden;
-    font-family: var(--font-manrope), system-ui, -apple-system, sans-serif;
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
   }
 
   ::selection {
-    background-color: rgba(217, 164, 91, 0.25);
-    color: #f3f0e9;
+    background-color: #d9a45b;
+    color: #070809;
   }
 
   :focus-visible {
     outline: 2px solid #d9a45b;
-    outline-offset: 3px;
+    outline-offset: 4px;
   }
 }
 
+.font-display-brutal {
+  font-family: 'Syne', sans-serif;
+  letter-spacing: -0.04em;
+}
+
 .font-serif-editorial {
-  font-family: var(--font-instrument-serif), 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
 }
 
 .font-sans-editorial {
-  font-family: var(--font-manrope), system-ui, -apple-system, sans-serif;
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
 }
 
 .font-mono-tech {
-  font-family: var(--font-jetbrains-mono), monospace;
+  font-family: 'JetBrains Mono', monospace;
 }
 
-/* Subtle, restrained cinematic vignette */
-.cinematic-vignette {
-  background: radial-gradient(ellipse at 50% 20%, rgba(217, 164, 91, 0.03) 0%, transparent 70%);
+/* Future-Noir Reticle & Crosshair Grid */
+.bg-grid-noir {
+  background-size: 80px 80px;
+  background-image: 
+    linear-gradient(to right, rgba(243, 240, 233, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(243, 240, 233, 0.03) 1px, transparent 1px);
 }
 
-/* Hairline rule */
-.hairline-border {
-  border-color: rgba(243, 240, 233, 0.08);
+/* Laser scan animation */
+@keyframes laserSweep {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
 }
 
-/* Respect user's reduced-motion preference */
+.animate-laser {
+  animation: laserSweep 6s linear infinite;
+}
+
+/* Marquee infinite scroll */
+@keyframes marqueeLeft {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marqueeLeft 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -1,28 +1,5 @@
 import type { Metadata } from 'next';
-import { Instrument_Serif, Manrope, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
-
-const instrumentSerif = Instrument_Serif({
-  weight: ['400'],
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-  variable: '--font-instrument-serif',
-  display: 'swap',
-});
-
-const manrope = Manrope({
-  weight: ['300', '400', '500', '600', '700'],
-  subsets: ['latin'],
-  variable: '--font-manrope',
-  display: 'swap',
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  weight: ['400', '500'],
-  subsets: ['latin'],
-  variable: '--font-jetbrains-mono',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: 'VAIBHAV LABS — Documentary Video Editor · Mystery & Investigative Storytelling',
@@ -59,11 +36,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${instrumentSerif.variable} ${manrope.variable} ${jetbrainsMono.variable} scroll-smooth`}
-    >
-      <body className="bg-[#101112] text-[#F3F0E9] antialiased selection:bg-[#D9A45B]/25 selection:text-[#F3F0E9]">
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="bg-[#070809] text-[#F3F0E9] antialiased selection:bg-[#D9A45B]/30 selection:text-[#F3F0E9] overflow-x-hidden">
         {children}
       </body>
     </html>

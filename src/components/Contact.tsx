@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, Send, AlertCircle, Copy, Check, Clock, ShieldCheck } from 'lucide-react';
+import { Mail, Send, AlertCircle, Copy, Check, Clock, ShieldCheck, Crosshair } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 interface FormState {
@@ -54,9 +54,9 @@ export const Contact: React.FC = () => {
     const errs: FormErrors = {};
 
     if (!formData.name.trim()) {
-      errs.name = 'Please provide your name or channel title.';
+      errs.name = 'Please state your name or channel title.';
     } else if (formData.name.trim().length < 2) {
-      errs.name = 'Name must be at least 2 characters.';
+      errs.name = 'Minimum 2 characters required.';
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -67,7 +67,7 @@ export const Contact: React.FC = () => {
     }
 
     if (!formData.details.trim()) {
-      errs.details = 'Please briefly outline your documentary topic and narrative requirements.';
+      errs.details = 'Please outline your documentary subject and editing requirements.';
     } else if (formData.details.trim().length < 10) {
       errs.details = 'Please provide at least a brief summary of the story (10+ characters).';
     }
@@ -89,13 +89,13 @@ export const Contact: React.FC = () => {
   };
 
   const openMailClient = () => {
-    const subject = encodeURIComponent(`Documentary Inquiry: ${formData.projectType} — ${formData.name}`);
+    const subject = encodeURIComponent(`Documentary Project Cut: ${formData.projectType} — ${formData.name}`);
     const body = encodeURIComponent(
       `Creator / Channel: ${formData.name}\n` +
       `Email: ${formData.email}\n` +
-      `Format: ${formData.projectType}\n` +
+      `Documentary Genre: ${formData.projectType}\n` +
       `Estimated Duration: ${formData.videoLength}\n\n` +
-      `Narrative Brief & Editing Requirements:\n${formData.details}\n`
+      `Narrative Scope & Editing Requirements:\n${formData.details}\n`
     );
     window.location.href = `mailto:${brand.contactEmail}?subject=${subject}&body=${body}`;
   };
@@ -104,60 +104,58 @@ export const Contact: React.FC = () => {
     <section
       id="contact"
       aria-label="Project Inquiries"
-      className="py-24 lg:py-36 border-b border-[#F3F0E9]/[0.08] bg-[#0c0d0e] relative"
+      className="py-28 lg:py-40 border-b border-[#F3F0E9]/15 bg-[#070809] relative"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="w-full px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16 lg:mb-24">
-          <div className="lg:col-span-8">
-            <div className="flex items-center space-x-2 font-mono-tech text-xs uppercase tracking-[0.2em] text-[#D9A45B] mb-4">
-              <span>07 // INITIATE</span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 mb-16 border-b border-[#F3F0E9]/15">
+          <div className="space-y-3">
+            <div className="flex items-center gap-2 font-mono-tech text-xs uppercase tracking-[0.25em] text-[#D9A45B]">
+              <span>[ 07 // INITIATE TRANSMISSION ]</span>
               <span className="text-[#A6A6A2]/40">·</span>
-              <span>DIRECT EDITORIAL INQUIRY</span>
+              <span>COMMISSION INQUIRY</span>
             </div>
-            <h2 className="font-serif-editorial text-4xl sm:text-5xl md:text-6xl font-normal text-[#F3F0E9] tracking-tight">
+            <h2 className="font-display-brutal text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase tracking-[-0.04em] text-[#F3F0E9]">
               {contact.heading}
             </h2>
           </div>
-          <div className="lg:col-span-4">
-            <p className="text-sm sm:text-base text-[#A6A6A2] font-sans-editorial leading-relaxed">
-              {contact.subheading}
-            </p>
+          <div className="max-w-md font-sans-editorial text-sm sm:text-base text-[#A6A6A2] leading-relaxed">
+            {contact.subheading}
           </div>
         </div>
 
-        {/* Form and Contact Information */}
+        {/* Form and Contact Specifications */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Inquiry Form (7 cols) */}
-          <div className="lg:col-span-7 p-8 sm:p-10 border border-[#F3F0E9]/[0.08] bg-[#141517] rounded-[2px]">
+          {/* Brutalist Commission Form (7 cols) */}
+          <div className="lg:col-span-7 p-8 sm:p-12 border border-[#F3F0E9]/20 bg-[#0c0d0f] relative">
             {isReadyToSend ? (
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <span className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-wider block">
-                    INQUIRY PREPARED FOR DISPATCH
+                  <span className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-widest block font-bold">
+                    [ INQUIRY TELEMETRY LOGGED ]
                   </span>
-                  <h3 className="font-serif-editorial text-3xl text-[#F3F0E9]">
-                    Project Details Confirmed
+                  <h3 className="font-display-brutal text-3xl sm:text-4xl text-[#F3F0E9] font-bold uppercase">
+                    Ready for Transmission
                   </h3>
-                  <p className="text-sm text-[#A6A6A2] font-sans-editorial leading-relaxed">
-                    Your project details for <strong className="text-[#F3F0E9]">{formData.name}</strong> ({formData.projectType}, {formData.videoLength}) are formatted. Click below to launch your email client with these parameters pre-filled.
+                  <p className="font-sans-editorial text-sm text-[#A6A6A2] leading-relaxed">
+                    Parameters for <strong className="text-[#F3F0E9]">{formData.name}</strong> ({formData.projectType}, {formData.videoLength}) are pre-formatted. Click below to launch your email client with these parameters pre-filled.
                   </p>
                 </div>
 
-                <div className="p-4 bg-[#101112] border border-[#F3F0E9]/[0.08] rounded-[2px] font-mono-tech text-xs text-[#A6A6A2] space-y-2">
-                  <div><strong className="text-[#F3F0E9]">To:</strong> {brand.contactEmail}</div>
-                  <div><strong className="text-[#F3F0E9]">Subject:</strong> Documentary Inquiry: {formData.projectType} — {formData.name}</div>
-                  <div><strong className="text-[#F3F0E9]">Duration:</strong> {formData.videoLength}</div>
+                <div className="p-5 bg-[#070809] border border-[#F3F0E9]/10 font-mono-tech text-xs text-[#A6A6A2] space-y-2">
+                  <div><strong className="text-[#F3F0E9]">TARGET:</strong> {brand.contactEmail}</div>
+                  <div><strong className="text-[#F3F0E9]">SUBJECT:</strong> Documentary Project Cut: {formData.projectType} — {formData.name}</div>
+                  <div><strong className="text-[#F3F0E9]">DURATION:</strong> {formData.videoLength}</div>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-4 pt-2">
+                <div className="flex flex-wrap items-center gap-4 pt-4">
                   <button
                     type="button"
                     onClick={openMailClient}
-                    className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#D9A45B] hover:bg-[#e5b36c] text-[#101112] font-mono-tech text-xs font-semibold uppercase tracking-wider rounded-[2px] transition-colors"
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-[#D9A45B] hover:bg-[#e5b36c] text-[#070809] font-mono-tech text-xs font-bold uppercase tracking-widest transition-colors shadow-2xl"
                   >
                     <Mail className="w-4 h-4" />
-                    <span>Send Via Email Client</span>
+                    <span>LAUNCH MAIL TRANSMISSION</span>
                   </button>
 
                   <button
@@ -165,19 +163,19 @@ export const Contact: React.FC = () => {
                     onClick={() => setIsReadyToSend(false)}
                     className="text-xs font-mono-tech text-[#A6A6A2] hover:text-[#F3F0E9] underline"
                   >
-                    Edit details
+                    Modify Parameters
                   </button>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate className="space-y-6">
+              <form onSubmit={handleSubmit} noValidate className="space-y-8">
                 {/* Name */}
-                <div>
+                <div className="border-b border-[#F3F0E9]/20 pb-2 focus-within:border-[#D9A45B] transition-colors">
                   <label
                     htmlFor="contact-name"
-                    className="block font-mono-tech text-xs uppercase tracking-wider text-[#F3F0E9] mb-2"
+                    className="block font-mono-tech text-xs uppercase tracking-wider text-[#A6A6A2] mb-1 font-semibold"
                   >
-                    Your Name or Channel Title <span className="text-[#D9A45B]">*</span>
+                    01 // Your Name or Channel Title <span className="text-[#D9A45B]">*</span>
                   </label>
                   <input
                     id="contact-name"
@@ -186,16 +184,12 @@ export const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g., Marcus Vance / Shadow Archive"
-                    className={`w-full px-4 py-3 bg-[#101112] border text-sm text-[#F3F0E9] placeholder-[#A6A6A2]/40 rounded-[2px] focus:outline-none transition-colors ${
-                      errors.name
-                        ? 'border-[#e74c3c]'
-                        : 'border-[#F3F0E9]/15 focus:border-[#D9A45B]'
-                    }`}
+                    className="w-full py-2 bg-transparent text-base text-[#F3F0E9] placeholder-[#A6A6A2]/30 focus:outline-none font-sans-editorial"
                     aria-invalid={Boolean(errors.name)}
                     aria-describedby={errors.name ? 'name-err' : undefined}
                   />
                   {errors.name && (
-                    <p id="name-err" className="mt-1.5 text-xs text-[#e74c3c] font-mono-tech flex items-center gap-1" role="alert">
+                    <p id="name-err" className="mt-1 text-xs text-[#e74c3c] font-mono-tech flex items-center gap-1" role="alert">
                       <AlertCircle className="w-3.5 h-3.5" />
                       {errors.name}
                     </p>
@@ -203,12 +197,12 @@ export const Contact: React.FC = () => {
                 </div>
 
                 {/* Email */}
-                <div>
+                <div className="border-b border-[#F3F0E9]/20 pb-2 focus-within:border-[#D9A45B] transition-colors">
                   <label
                     htmlFor="contact-email"
-                    className="block font-mono-tech text-xs uppercase tracking-wider text-[#F3F0E9] mb-2"
+                    className="block font-mono-tech text-xs uppercase tracking-wider text-[#A6A6A2] mb-1 font-semibold"
                   >
-                    Email Address <span className="text-[#D9A45B]">*</span>
+                    02 // Direct Communication Email <span className="text-[#D9A45B]">*</span>
                   </label>
                   <input
                     id="contact-email"
@@ -217,60 +211,56 @@ export const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="director@channel.com"
-                    className={`w-full px-4 py-3 bg-[#101112] border text-sm text-[#F3F0E9] placeholder-[#A6A6A2]/40 rounded-[2px] focus:outline-none transition-colors ${
-                      errors.email
-                        ? 'border-[#e74c3c]'
-                        : 'border-[#F3F0E9]/15 focus:border-[#D9A45B]'
-                    }`}
+                    className="w-full py-2 bg-transparent text-base text-[#F3F0E9] placeholder-[#A6A6A2]/30 focus:outline-none font-sans-editorial"
                     aria-invalid={Boolean(errors.email)}
                     aria-describedby={errors.email ? 'email-err' : undefined}
                   />
                   {errors.email && (
-                    <p id="email-err" className="mt-1.5 text-xs text-[#e74c3c] font-mono-tech flex items-center gap-1" role="alert">
+                    <p id="email-err" className="mt-1 text-xs text-[#e74c3c] font-mono-tech flex items-center gap-1" role="alert">
                       <AlertCircle className="w-3.5 h-3.5" />
                       {errors.email}
                     </p>
                   )}
                 </div>
 
-                {/* Format & Length */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
+                {/* Genre & Length */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div className="border-b border-[#F3F0E9]/20 pb-2 focus-within:border-[#D9A45B] transition-colors">
                     <label
                       htmlFor="contact-type"
-                      className="block font-mono-tech text-xs uppercase tracking-wider text-[#F3F0E9] mb-2"
+                      className="block font-mono-tech text-xs uppercase tracking-wider text-[#A6A6A2] mb-1 font-semibold"
                     >
-                      Documentary Genre
+                      03 // Documentary Format
                     </label>
                     <select
                       id="contact-type"
                       value={formData.projectType}
                       onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#101112] border border-[#F3F0E9]/15 text-sm text-[#F3F0E9] rounded-[2px] focus:outline-none focus:border-[#D9A45B]"
+                      className="w-full py-2 bg-transparent text-sm text-[#F3F0E9] focus:outline-none font-mono-tech"
                     >
                       {projectTypes.map((t) => (
-                        <option key={t} value={t} className="bg-[#141517] text-[#F3F0E9]">
+                        <option key={t} value={t} className="bg-[#0c0d0f] text-[#F3F0E9]">
                           {t}
                         </option>
                       ))}
                     </select>
                   </div>
 
-                  <div>
+                  <div className="border-b border-[#F3F0E9]/20 pb-2 focus-within:border-[#D9A45B] transition-colors">
                     <label
                       htmlFor="contact-length"
-                      className="block font-mono-tech text-xs uppercase tracking-wider text-[#F3F0E9] mb-2"
+                      className="block font-mono-tech text-xs uppercase tracking-wider text-[#A6A6A2] mb-1 font-semibold"
                     >
-                      Estimated Duration
+                      04 // Estimated Runtime
                     </label>
                     <select
                       id="contact-length"
                       value={formData.videoLength}
                       onChange={(e) => setFormData({ ...formData, videoLength: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#101112] border border-[#F3F0E9]/15 text-sm text-[#F3F0E9] rounded-[2px] focus:outline-none focus:border-[#D9A45B]"
+                      className="w-full py-2 bg-transparent text-sm text-[#F3F0E9] focus:outline-none font-mono-tech"
                     >
                       {lengthOptions.map((l) => (
-                        <option key={l} value={l} className="bg-[#141517] text-[#F3F0E9]">
+                        <option key={l} value={l} className="bg-[#0c0d0f] text-[#F3F0E9]">
                           {l}
                         </option>
                       ))}
@@ -279,12 +269,12 @@ export const Contact: React.FC = () => {
                 </div>
 
                 {/* Details */}
-                <div>
+                <div className="border-b border-[#F3F0E9]/20 pb-2 focus-within:border-[#D9A45B] transition-colors">
                   <label
                     htmlFor="contact-details"
-                    className="block font-mono-tech text-xs uppercase tracking-wider text-[#F3F0E9] mb-2"
+                    className="block font-mono-tech text-xs uppercase tracking-wider text-[#A6A6A2] mb-1 font-semibold"
                   >
-                    Project Details & Narrative Direction <span className="text-[#D9A45B]">*</span>
+                    05 // Story Subject & Editing Direction <span className="text-[#D9A45B]">*</span>
                   </label>
                   <textarea
                     id="contact-details"
@@ -292,17 +282,13 @@ export const Contact: React.FC = () => {
                     required
                     value={formData.details}
                     onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                    placeholder="Tell me about the story: What is the subject? Is narration recorded? Do you need custom maps, timelines, or full cinematic assembly?"
-                    className={`w-full px-4 py-3 bg-[#101112] border text-sm text-[#F3F0E9] placeholder-[#A6A6A2]/40 rounded-[2px] focus:outline-none transition-colors resize-y ${
-                      errors.details
-                        ? 'border-[#e74c3c]'
-                        : 'border-[#F3F0E9]/15 focus:border-[#D9A45B]'
-                    }`}
+                    placeholder="Describe your subject: Is the narration voiceover recorded? What visual references do you envision? Do you require custom maps, timelines, or full cinematic assembly?"
+                    className="w-full py-2 bg-transparent text-sm text-[#F3F0E9] placeholder-[#A6A6A2]/30 focus:outline-none font-sans-editorial resize-y"
                     aria-invalid={Boolean(errors.details)}
                     aria-describedby={errors.details ? 'details-err' : undefined}
                   />
                   {errors.details && (
-                    <p id="details-err" className="mt-1.5 text-xs text-[#e74c3c] font-mono-tech flex items-center gap-1" role="alert">
+                    <p id="details-err" className="mt-1 text-xs text-[#e74c3c] font-mono-tech flex items-center gap-1" role="alert">
                       <AlertCircle className="w-3.5 h-3.5" />
                       {errors.details}
                     </p>
@@ -311,29 +297,29 @@ export const Contact: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#D9A45B] hover:bg-[#e5b36c] text-[#101112] font-mono-tech text-xs font-semibold uppercase tracking-wider rounded-[2px] transition-colors shadow-[0_4px_25px_rgba(217,164,91,0.2)]"
+                  className="w-full inline-flex items-center justify-center gap-3 py-5 bg-[#D9A45B] hover:bg-[#e5b36c] text-[#070809] font-mono-tech text-xs font-bold uppercase tracking-widest transition-colors shadow-2xl"
                 >
-                  <span>{contact.ctaButton}</span>
-                  <Send className="w-3.5 h-3.5" />
+                  <Crosshair className="w-4 h-4" />
+                  <span>TRANSMIT PROJECT INQUIRY</span>
                 </button>
               </form>
             )}
           </div>
 
-          {/* Right Column: Direct Email & Discipline Notes (5 cols) */}
+          {/* Right Column: Direct Telemetry & Standards (5 cols) */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="p-8 border border-[#F3F0E9]/[0.08] bg-[#141517] rounded-[2px] space-y-4">
-              <span className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-wider block">
-                DIRECT EMAIL
+            <div className="p-8 border border-[#F3F0E9]/20 bg-[#0c0d0f] space-y-4">
+              <span className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-widest block font-bold">
+                DIRECT STUDIO DISPATCH
               </span>
-              <h3 className="font-serif-editorial text-3xl text-[#F3F0E9]">
-                Prefer Direct Communication?
+              <h3 className="font-display-brutal text-2xl text-[#F3F0E9] uppercase font-bold">
+                Prefer Direct Email?
               </h3>
-              <p className="text-sm text-[#A6A6A2] font-sans-editorial leading-relaxed">
-                If you already have a script document, footage drive link, or rough timeline ready to review:
+              <p className="font-sans-editorial text-sm text-[#A6A6A2] leading-relaxed">
+                If you already have a script document, footage drive link, or rough timeline ready for evaluation:
               </p>
-              <div className="pt-2 flex items-center justify-between p-3.5 bg-[#101112] border border-[#F3F0E9]/10 rounded-[2px]">
-                <code className="text-xs sm:text-sm text-[#F3F0E9] font-mono-tech select-all">
+              <div className="pt-2 flex items-center justify-between p-4 bg-[#070809] border border-[#F3F0E9]/15">
+                <code className="text-xs sm:text-sm text-[#F3F0E9] font-mono-tech select-all font-bold">
                   {brand.contactEmail}
                 </code>
                 <button
@@ -347,15 +333,15 @@ export const Contact: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-8 border border-[#F3F0E9]/[0.08] bg-[#141517] rounded-[2px] space-y-5">
-              <span className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-wider block">
-                STANDARDS OF COLLABORATION
+            <div className="p-8 border border-[#F3F0E9]/20 bg-[#0c0d0f] space-y-5">
+              <span className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-widest block font-bold">
+                STANDARDS OF ENGAGEMENT
               </span>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <Clock className="w-4 h-4 text-[#D9A45B] shrink-0 mt-0.5" />
                   <div>
-                    <div className="text-xs font-mono-tech text-[#F3F0E9] font-medium uppercase">
+                    <div className="text-xs font-mono-tech text-[#F3F0E9] font-bold uppercase">
                       Response Window
                     </div>
                     <p className="text-xs text-[#A6A6A2] font-sans-editorial leading-relaxed mt-0.5">
@@ -367,11 +353,11 @@ export const Contact: React.FC = () => {
                 <div className="flex items-start gap-3">
                   <ShieldCheck className="w-4 h-4 text-[#D9A45B] shrink-0 mt-0.5" />
                   <div>
-                    <div className="text-xs font-mono-tech text-[#F3F0E9] font-medium uppercase">
+                    <div className="text-xs font-mono-tech text-[#F3F0E9] font-bold uppercase">
                       Strict Confidentiality
                     </div>
                     <p className="text-xs text-[#A6A6A2] font-sans-editorial leading-relaxed mt-0.5">
-                      All documentary research, scripts, and production material remain strictly confidential.
+                      All research, scripts, and investigative findings remain strictly confidential under standard NDA principles.
                     </p>
                   </div>
                 </div>

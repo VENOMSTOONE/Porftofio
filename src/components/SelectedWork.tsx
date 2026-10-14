@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Play, Clock, ArrowUpRight } from 'lucide-react';
-import { motion } from 'motion/react';
+import { Play, Clock, ArrowUpRight, Crosshair, Film, Layers } from 'lucide-react';
 import { portfolioData, type ProjectItem } from '../data/portfolioData';
 import { CinematicFrame } from './CinematicFrame';
 import { ProjectModal } from './ProjectModal';
@@ -11,474 +10,316 @@ export const SelectedWork: React.FC = () => {
   const { selectedWork } = portfolioData;
   const [activeProject, setActiveProject] = useState<ProjectItem | null>(null);
 
-  const getFrameType = (assetKey: string): 'intro-1' | 'intro-2' | 'intro-3' | 'mg-1' | 'mg-2' | 'timeline-1' => {
-    switch (assetKey) {
-      case 'Intro Demo 1': return 'intro-1';
-      case 'Intro Demo 2': return 'intro-2';
-      case 'Intro Demo 3': return 'intro-3';
-      case 'MG Demo 1': return 'mg-1';
-      case 'MG Demo 2': return 'mg-2';
-      case 'Timeline 1': return 'timeline-1';
-      default: return 'intro-1';
-    }
-  };
+  const p1 = selectedWork.projects[0];
+  const p2 = selectedWork.projects[1];
+  const p3 = selectedWork.projects[2];
+  const p4 = selectedWork.projects[3];
+  const p5 = selectedWork.projects[4];
+  const p6 = selectedWork.projects[5];
 
   return (
     <section
       id="work"
       aria-label="Selected Documentary Work"
-      className="py-24 lg:py-36 border-b border-[#F3F0E9]/[0.08] relative"
+      className="py-28 lg:py-40 border-b border-[#F3F0E9]/15 bg-[#070809] relative"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="w-full px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16 lg:mb-24">
-          <div className="lg:col-span-8">
-            <div className="flex items-center space-x-2 font-mono-tech text-xs uppercase tracking-[0.2em] text-[#D9A45B] mb-4">
-              <span>01 // SELECTED WORK</span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 mb-20 border-b border-[#F3F0E9]/15">
+          <div className="space-y-3">
+            <div className="flex items-center gap-2 font-mono-tech text-xs uppercase tracking-[0.25em] text-[#D9A45B]">
+              <span>[ EXHIBITION // ARCHIVE ]</span>
               <span className="text-[#A6A6A2]/40">·</span>
-              <span>CURATED EXPERIMENTS & DEMOS</span>
+              <span>SIX EDITING EXPERIMENTS</span>
             </div>
-            <h2 className="font-serif-editorial text-4xl sm:text-5xl md:text-6xl font-normal text-[#F3F0E9] tracking-tight">
+            <h2 className="font-display-brutal text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase tracking-[-0.04em] text-[#F3F0E9]">
               {selectedWork.heading}
             </h2>
           </div>
-          <div className="lg:col-span-4">
-            <p className="text-sm sm:text-base text-[#A6A6A2] font-sans-editorial leading-relaxed">
-              {selectedWork.subheading}
-            </p>
+          <div className="max-w-md font-sans-editorial text-sm sm:text-base text-[#A6A6A2] leading-relaxed">
+            {selectedWork.subheading}
           </div>
         </div>
 
-        {/* Editorial Gallery: Varied Composition & Asymmetry */}
-        <div className="space-y-16 lg:space-y-24">
-          {/* Project 01: Heroic Full-Width Landscape Cut (Intro Demo 1) */}
-          {(() => {
-            const p = selectedWork.projects[0];
-            return (
-              <article
-                className="group relative border border-[#F3F0E9]/[0.08] hover:border-[#D9A45B]/40 transition-colors duration-500 bg-[#141517] rounded-[2px] overflow-hidden"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-                  {/* Cinematic Visual Frame (7 cols) */}
-                  <div
-                    className="lg:col-span-8 relative overflow-hidden cursor-pointer"
-                    onClick={() => setActiveProject(p)}
-                  >
-                    <CinematicFrame
-                      type="intro-1"
-                      aspectRatio="16/9"
-                      className="transition-transform duration-700 group-hover:scale-[1.01]"
-                    />
+        {/* Massive Editorial Project Exhibition */}
+        <div className="space-y-28 lg:space-y-40">
+          {/* PROJECT 01: MONUMENTAL WIDESCREEN EXHIBITION */}
+          <article className="group relative">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-6">
+              <div className="flex items-baseline gap-4">
+                <span className="font-display-brutal text-4xl sm:text-6xl text-[#D9A45B] font-extrabold">
+                  01
+                </span>
+                <div>
+                  <span className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-widest block">
+                    {p1.category}
+                  </span>
+                  <h3 className="font-serif-editorial text-3xl sm:text-5xl text-[#F3F0E9] group-hover:text-[#D9A45B] transition-colors italic">
+                    {p1.title}
+                  </h3>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 font-mono-tech text-xs text-[#A6A6A2]">
+                <span>{p1.duration} · 24 FPS</span>
+                <span className="px-2 py-0.5 border border-[#F3F0E9]/20 uppercase text-[10px] bg-[#0f1012]">
+                  {p1.projectType}
+                </span>
+              </div>
+            </div>
 
-                    {/* Hover Inspect Affordance */}
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#D9A45B] text-[#101112] font-mono-tech text-xs font-semibold uppercase tracking-wider rounded-[2px] shadow-2xl">
-                        <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>Inspect Cut</span>
-                      </div>
-                    </div>
+            {/* Massive Landscape Image Viewport */}
+            <div
+              className="relative w-full border border-[#F3F0E9]/20 bg-[#0e0f11] p-2 cursor-pointer overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.95)]"
+              onClick={() => setActiveProject(p1)}
+            >
+              <div className="relative overflow-hidden">
+                <CinematicFrame
+                  type="intro-1"
+                  aspectRatio="21/9"
+                  className="transition-transform duration-1000 group-hover:scale-[1.015]"
+                />
 
-                    <div className="absolute top-4 right-4 px-2.5 py-1 bg-black/85 backdrop-blur-sm border border-white/10 rounded-[2px] font-mono-tech text-[10px] text-[#F3F0E9] flex items-center gap-1.5">
-                      <Clock className="w-3 h-3 text-[#D9A45B]" />
-                      {p.duration}
-                    </div>
-                  </div>
-
-                  {/* Editorial Textual Column (4 cols) */}
-                  <div className="lg:col-span-4 p-8 lg:p-10 flex flex-col justify-between bg-[#141517] border-t lg:border-t-0 lg:border-l border-[#F3F0E9]/[0.08]">
-                    <div>
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="font-serif-editorial text-3xl text-[#D9A45B] italic">
-                          01
-                        </span>
-                        <span className="font-mono-tech text-[10px] text-[#A6A6A2]/70 uppercase tracking-widest px-2 py-0.5 bg-[#191A1C] border border-[#F3F0E9]/[0.06] rounded-xs">
-                          {p.projectType}
-                        </span>
-                      </div>
-
-                      <div className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-wider mb-2">
-                        {p.category}
-                      </div>
-
-                      <h3 className="font-serif-editorial text-3xl sm:text-4xl text-[#F3F0E9] group-hover:text-[#D9A45B] transition-colors leading-[1.05]">
-                        <button
-                          type="button"
-                          onClick={() => setActiveProject(p)}
-                          className="text-left focus:outline-none"
-                        >
-                          {p.title}
-                        </button>
-                      </h3>
-
-                      <p className="mt-4 text-sm text-[#A6A6A2] font-sans-editorial leading-relaxed">
-                        {p.description}
-                      </p>
-                    </div>
-
-                    <div className="mt-8 pt-4 border-t border-[#F3F0E9]/[0.08] flex items-center justify-between">
-                      <span className="font-mono-tech text-xs text-[#A6A6A2]/60">
-                        {p.aspectRatio} · 24 FPS
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => setActiveProject(p)}
-                        className="inline-flex items-center gap-1 font-mono-tech text-xs text-[#D9A45B] hover:underline"
-                      >
-                        Deconstruct
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
+                {/* Hover Focal Prompt */}
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="inline-flex items-center gap-3 px-8 py-4 bg-[#D9A45B] text-[#070809] font-mono-tech text-xs font-bold uppercase tracking-widest shadow-2xl">
+                    <Play className="w-4 h-4 fill-current" />
+                    <span>DECONSTRUCT COLD OPEN CUT</span>
                   </div>
                 </div>
-              </article>
-            );
-          })()}
+              </div>
 
-          {/* Asymmetric Pair: Project 02 (7 cols) & Project 03 (5 cols) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Project 02 (Intro Demo 2) */}
-            {(() => {
-              const p = selectedWork.projects[1];
-              return (
-                <article
-                  className="lg:col-span-7 group border border-[#F3F0E9]/[0.08] hover:border-[#D9A45B]/40 transition-colors duration-500 bg-[#141517] rounded-[2px] overflow-hidden flex flex-col justify-between"
+              {/* Technical Description Bar */}
+              <div className="p-4 bg-[#090a0b] border-t border-[#F3F0E9]/10 flex flex-col md:flex-row md:items-center justify-between gap-4 font-mono-tech text-xs text-[#A6A6A2]">
+                <p className="max-w-3xl font-sans-editorial text-sm text-[#A6A6A2] leading-relaxed">
+                  {p1.description}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setActiveProject(p1)}
+                  className="inline-flex items-center gap-2 text-[#D9A45B] hover:underline uppercase shrink-0 font-bold"
                 >
-                  <div
-                    className="relative overflow-hidden cursor-pointer"
-                    onClick={() => setActiveProject(p)}
-                  >
-                    <CinematicFrame
-                      type="intro-2"
-                      aspectRatio="16/9"
-                      className="transition-transform duration-700 group-hover:scale-[1.01]"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#D9A45B] text-[#101112] font-mono-tech text-xs font-semibold uppercase tracking-wider rounded-[2px]">
-                        <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>Inspect Cut</span>
-                      </div>
-                    </div>
-                    <div className="absolute top-3 right-3 px-2 py-0.5 bg-black/85 border border-white/10 rounded-[2px] font-mono-tech text-[10px] text-[#F3F0E9]">
-                      {p.duration}
-                    </div>
-                  </div>
+                  <span>INSPECT STEMS</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </article>
 
-                  <div className="p-8">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="font-serif-editorial text-2xl text-[#D9A45B] italic">02</span>
-                      <span className="font-mono-tech text-[10px] text-[#A6A6A2]/70 uppercase tracking-widest px-2 py-0.5 bg-[#191A1C] border border-[#F3F0E9]/[0.06] rounded-xs">
-                        {p.projectType}
-                      </span>
-                    </div>
-                    <div className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-wider mb-1.5">
-                      {p.category}
-                    </div>
-                    <h3 className="font-serif-editorial text-2xl sm:text-3xl text-[#F3F0E9] group-hover:text-[#D9A45B] transition-colors">
-                      <button
-                        type="button"
-                        onClick={() => setActiveProject(p)}
-                        className="text-left focus:outline-none"
-                      >
-                        {p.title}
-                      </button>
+          {/* PROJECTS 02 & 03: ASYMMETRIC STAGGERED CONTRAST */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Project 02 (7 cols): Radar Conflict Hook */}
+            <article className="lg:col-span-7 group space-y-5">
+              <div className="flex items-baseline justify-between border-b border-[#F3F0E9]/10 pb-3">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-display-brutal text-3xl sm:text-4xl text-[#D9A45B] font-extrabold">02</span>
+                  <div>
+                    <span className="font-mono-tech text-[10px] text-[#D9A45B] uppercase tracking-widest block">{p2.category}</span>
+                    <h3 className="font-serif-editorial text-2xl sm:text-4xl text-[#F3F0E9] group-hover:text-[#D9A45B] transition-colors italic">
+                      {p2.title}
                     </h3>
-                    <p className="mt-3 text-sm text-[#A6A6A2] font-sans-editorial leading-relaxed">
-                      {p.description}
-                    </p>
-                    <div className="mt-6 pt-4 border-t border-[#F3F0E9]/[0.08] flex items-center justify-between">
-                      <span className="font-mono-tech text-xs text-[#A6A6A2]/60">Split-screen radar deconstruction</span>
-                      <button
-                        type="button"
-                        onClick={() => setActiveProject(p)}
-                        className="font-mono-tech text-xs text-[#D9A45B] inline-flex items-center gap-1"
-                      >
-                        View Sample <ArrowUpRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  </div>
-                </article>
-              );
-            })()}
-
-            {/* Project 03 (Intro Demo 3) */}
-            {(() => {
-              const p = selectedWork.projects[2];
-              return (
-                <article
-                  className="lg:col-span-5 group border border-[#F3F0E9]/[0.08] hover:border-[#D9A45B]/40 transition-colors duration-500 bg-[#141517] rounded-[2px] overflow-hidden flex flex-col justify-between"
-                >
-                  <div
-                    className="relative overflow-hidden cursor-pointer"
-                    onClick={() => setActiveProject(p)}
-                  >
-                    <CinematicFrame
-                      type="intro-3"
-                      aspectRatio="16/9"
-                      className="transition-transform duration-700 group-hover:scale-[1.01]"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#D9A45B] text-[#101112] font-mono-tech text-xs font-semibold uppercase tracking-wider rounded-[2px]">
-                        <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>Inspect Cut</span>
-                      </div>
-                    </div>
-                    <div className="absolute top-3 right-3 px-2 py-0.5 bg-black/85 border border-white/10 rounded-[2px] font-mono-tech text-[10px] text-[#F3F0E9]">
-                      {p.duration}
-                    </div>
-                  </div>
-
-                  <div className="p-8">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="font-serif-editorial text-2xl text-[#D9A45B] italic">03</span>
-                      <span className="font-mono-tech text-[10px] text-[#A6A6A2]/70 uppercase tracking-widest px-2 py-0.5 bg-[#191A1C] border border-[#F3F0E9]/[0.06] rounded-xs">
-                        {p.projectType}
-                      </span>
-                    </div>
-                    <div className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-wider mb-1.5">
-                      {p.category}
-                    </div>
-                    <h3 className="font-serif-editorial text-2xl text-[#F3F0E9] group-hover:text-[#D9A45B] transition-colors">
-                      <button
-                        type="button"
-                        onClick={() => setActiveProject(p)}
-                        className="text-left focus:outline-none"
-                      >
-                        {p.title}
-                      </button>
-                    </h3>
-                    <p className="mt-3 text-sm text-[#A6A6A2] font-sans-editorial leading-relaxed">
-                      {p.description}
-                    </p>
-                    <div className="mt-6 pt-4 border-t border-[#F3F0E9]/[0.08] flex items-center justify-between">
-                      <span className="font-mono-tech text-xs text-[#A6A6A2]/60">Microfiche archival pacing</span>
-                      <button
-                        type="button"
-                        onClick={() => setActiveProject(p)}
-                        className="font-mono-tech text-xs text-[#D9A45B] inline-flex items-center gap-1"
-                      >
-                        View Sample <ArrowUpRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  </div>
-                </article>
-              );
-            })()}
-          </div>
-
-          {/* Documentary Motion Graphics Pairing: MG Demo 1 & MG Demo 2 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* MG Demo 1 */}
-            {(() => {
-              const p = selectedWork.projects[3];
-              return (
-                <article
-                  className="group border border-[#F3F0E9]/[0.08] hover:border-[#D9A45B]/40 transition-colors duration-500 bg-[#141517] rounded-[2px] overflow-hidden"
-                >
-                  <div
-                    className="relative overflow-hidden cursor-pointer"
-                    onClick={() => setActiveProject(p)}
-                  >
-                    <CinematicFrame
-                      type="mg-1"
-                      aspectRatio="16/9"
-                      className="transition-transform duration-700 group-hover:scale-[1.01]"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#D9A45B] text-[#101112] font-mono-tech text-xs font-semibold uppercase tracking-wider rounded-[2px]">
-                        <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>Inspect Graphics</span>
-                      </div>
-                    </div>
-                    <div className="absolute top-3 right-3 px-2 py-0.5 bg-black/85 border border-white/10 rounded-[2px] font-mono-tech text-[10px] text-[#F3F0E9]">
-                      {p.duration}
-                    </div>
-                  </div>
-
-                  <div className="p-8">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="font-serif-editorial text-2xl text-[#D9A45B] italic">04</span>
-                      <span className="font-mono-tech text-[10px] text-[#A6A6A2]/70 uppercase tracking-widest px-2 py-0.5 bg-[#191A1C] border border-[#F3F0E9]/[0.06] rounded-xs">
-                        {p.projectType}
-                      </span>
-                    </div>
-                    <div className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-wider mb-1.5">
-                      {p.category}
-                    </div>
-                    <h3 className="font-serif-editorial text-2xl text-[#F3F0E9] group-hover:text-[#D9A45B] transition-colors">
-                      <button
-                        type="button"
-                        onClick={() => setActiveProject(p)}
-                        className="text-left focus:outline-none"
-                      >
-                        {p.title}
-                      </button>
-                    </h3>
-                    <p className="mt-3 text-sm text-[#A6A6A2] font-sans-editorial leading-relaxed">
-                      {p.description}
-                    </p>
-                    <div className="mt-6 pt-4 border-t border-[#F3F0E9]/[0.08] flex items-center justify-between">
-                      <span className="font-mono-tech text-xs text-[#A6A6A2]/60">Redaction & evidence handling</span>
-                      <button
-                        type="button"
-                        onClick={() => setActiveProject(p)}
-                        className="font-mono-tech text-xs text-[#D9A45B] inline-flex items-center gap-1"
-                      >
-                        Inspect <ArrowUpRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  </div>
-                </article>
-              );
-            })()}
-
-            {/* MG Demo 2 */}
-            {(() => {
-              const p = selectedWork.projects[4];
-              return (
-                <article
-                  className="group border border-[#F3F0E9]/[0.08] hover:border-[#D9A45B]/40 transition-colors duration-500 bg-[#141517] rounded-[2px] overflow-hidden"
-                >
-                  <div
-                    className="relative overflow-hidden cursor-pointer"
-                    onClick={() => setActiveProject(p)}
-                  >
-                    <CinematicFrame
-                      type="mg-2"
-                      aspectRatio="16/9"
-                      className="transition-transform duration-700 group-hover:scale-[1.01]"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#D9A45B] text-[#101112] font-mono-tech text-xs font-semibold uppercase tracking-wider rounded-[2px]">
-                        <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>Inspect Map</span>
-                      </div>
-                    </div>
-                    <div className="absolute top-3 right-3 px-2 py-0.5 bg-black/85 border border-white/10 rounded-[2px] font-mono-tech text-[10px] text-[#F3F0E9]">
-                      {p.duration}
-                    </div>
-                  </div>
-
-                  <div className="p-8">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="font-serif-editorial text-2xl text-[#D9A45B] italic">05</span>
-                      <span className="font-mono-tech text-[10px] text-[#A6A6A2]/70 uppercase tracking-widest px-2 py-0.5 bg-[#191A1C] border border-[#F3F0E9]/[0.06] rounded-xs">
-                        {p.projectType}
-                      </span>
-                    </div>
-                    <div className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-wider mb-1.5">
-                      {p.category}
-                    </div>
-                    <h3 className="font-serif-editorial text-2xl text-[#F3F0E9] group-hover:text-[#D9A45B] transition-colors">
-                      <button
-                        type="button"
-                        onClick={() => setActiveProject(p)}
-                        className="text-left focus:outline-none"
-                      >
-                        {p.title}
-                      </button>
-                    </h3>
-                    <p className="mt-3 text-sm text-[#A6A6A2] font-sans-editorial leading-relaxed">
-                      {p.description}
-                    </p>
-                    <div className="mt-6 pt-4 border-t border-[#F3F0E9]/[0.08] flex items-center justify-between">
-                      <span className="font-mono-tech text-xs text-[#A6A6A2]/60">3D terrain & coordinate plot</span>
-                      <button
-                        type="button"
-                        onClick={() => setActiveProject(p)}
-                        className="font-mono-tech text-xs text-[#D9A45B] inline-flex items-center gap-1"
-                      >
-                        Inspect <ArrowUpRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  </div>
-                </article>
-              );
-            })()}
-          </div>
-
-          {/* Project 06: Full-Width Chronological Timeline Feature */}
-          {(() => {
-            const p = selectedWork.projects[5];
-            return (
-              <article
-                className="group border border-[#F3F0E9]/[0.08] hover:border-[#D9A45B]/40 transition-colors duration-500 bg-[#141517] rounded-[2px] overflow-hidden"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-                  <div
-                    className="lg:col-span-8 relative overflow-hidden cursor-pointer"
-                    onClick={() => setActiveProject(p)}
-                  >
-                    <CinematicFrame
-                      type="timeline-1"
-                      aspectRatio="16/9"
-                      className="transition-transform duration-700 group-hover:scale-[1.01]"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#D9A45B] text-[#101112] font-mono-tech text-xs font-semibold uppercase tracking-wider rounded-[2px]">
-                        <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>Inspect Chronology Cut</span>
-                      </div>
-                    </div>
-                    <div className="absolute top-4 right-4 px-2.5 py-1 bg-black/85 border border-white/10 rounded-[2px] font-mono-tech text-[10px] text-[#F3F0E9]">
-                      {p.duration}
-                    </div>
-                  </div>
-
-                  <div className="lg:col-span-4 p-8 lg:p-10 flex flex-col justify-between bg-[#141517] border-t lg:border-t-0 lg:border-l border-[#F3F0E9]/[0.08]">
-                    <div>
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="font-serif-editorial text-3xl text-[#D9A45B] italic">06</span>
-                        <span className="font-mono-tech text-[10px] text-[#A6A6A2]/70 uppercase tracking-widest px-2 py-0.5 bg-[#191A1C] border border-[#F3F0E9]/[0.06] rounded-xs">
-                          {p.projectType}
-                        </span>
-                      </div>
-
-                      <div className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-wider mb-2">
-                        {p.category}
-                      </div>
-
-                      <h3 className="font-serif-editorial text-3xl sm:text-4xl text-[#F3F0E9] group-hover:text-[#D9A45B] transition-colors leading-[1.05]">
-                        <button
-                          type="button"
-                          onClick={() => setActiveProject(p)}
-                          className="text-left focus:outline-none"
-                        >
-                          {p.title}
-                        </button>
-                      </h3>
-
-                      <p className="mt-4 text-sm text-[#A6A6A2] font-sans-editorial leading-relaxed">
-                        {p.description}
-                      </p>
-                    </div>
-
-                    <div className="mt-8 pt-4 border-t border-[#F3F0E9]/[0.08] flex items-center justify-between">
-                      <span className="font-mono-tech text-xs text-[#A6A6A2]/60">48-Hour Multi-Track Synchronizer</span>
-                      <button
-                        type="button"
-                        onClick={() => setActiveProject(p)}
-                        className="font-mono-tech text-xs text-[#D9A45B] inline-flex items-center gap-1"
-                      >
-                        Inspect Timeline <ArrowUpRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
                   </div>
                 </div>
-              </article>
-            );
-          })()}
+                <span className="font-mono-tech text-xs text-[#A6A6A2]">{p2.duration}</span>
+              </div>
+
+              <div
+                className="relative border border-[#F3F0E9]/20 bg-[#0e0f11] p-1.5 cursor-pointer overflow-hidden shadow-2xl"
+                onClick={() => setActiveProject(p2)}
+              >
+                <CinematicFrame
+                  type="intro-2"
+                  aspectRatio="16/9"
+                  className="transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="inline-flex items-center gap-2 px-6 py-3 bg-[#D9A45B] text-[#070809] font-mono-tech text-xs font-bold uppercase tracking-wider">
+                    <Play className="w-3.5 h-3.5 fill-current" />
+                    <span>INSPECT RADAR CUT</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="font-sans-editorial text-sm text-[#A6A6A2] leading-relaxed">
+                {p2.description}
+              </div>
+            </article>
+
+            {/* Project 03 (5 cols): Historical Microfiche Still */}
+            <article className="lg:col-span-5 group space-y-5 lg:pt-14">
+              <div className="flex items-baseline justify-between border-b border-[#F3F0E9]/10 pb-3">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-display-brutal text-3xl sm:text-4xl text-[#D9A45B] font-extrabold">03</span>
+                  <div>
+                    <span className="font-mono-tech text-[10px] text-[#D9A45B] uppercase tracking-widest block">{p3.category}</span>
+                    <h3 className="font-serif-editorial text-2xl sm:text-3xl text-[#F3F0E9] group-hover:text-[#D9A45B] transition-colors italic">
+                      {p3.title}
+                    </h3>
+                  </div>
+                </div>
+                <span className="font-mono-tech text-xs text-[#A6A6A2]">{p3.duration}</span>
+              </div>
+
+              <div
+                className="relative border border-[#F3F0E9]/20 bg-[#0e0f11] p-1.5 cursor-pointer overflow-hidden shadow-2xl"
+                onClick={() => setActiveProject(p3)}
+              >
+                <CinematicFrame
+                  type="intro-3"
+                  aspectRatio="16/9"
+                  className="transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="inline-flex items-center gap-2 px-6 py-3 bg-[#D9A45B] text-[#070809] font-mono-tech text-xs font-bold uppercase tracking-wider">
+                    <Play className="w-3.5 h-3.5 fill-current" />
+                    <span>INSPECT ARCHIVE CUT</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="font-sans-editorial text-sm text-[#A6A6A2] leading-relaxed">
+                {p3.description}
+              </div>
+            </article>
+          </div>
+
+          {/* PROJECTS 04 & 05: DOCUMENTARY MOTION GRAPHICS PLATES */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+            {/* MG Demo 1: Forensic Dossier */}
+            <article className="group space-y-5">
+              <div className="flex items-baseline justify-between border-b border-[#F3F0E9]/10 pb-3">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-display-brutal text-3xl text-[#D9A45B] font-extrabold">04</span>
+                  <div>
+                    <span className="font-mono-tech text-[10px] text-[#D9A45B] uppercase tracking-widest block">{p4.category}</span>
+                    <h3 className="font-serif-editorial text-2xl sm:text-3xl text-[#F3F0E9] group-hover:text-[#D9A45B] transition-colors italic">
+                      {p4.title}
+                    </h3>
+                  </div>
+                </div>
+                <span className="font-mono-tech text-xs text-[#A6A6A2]">{p4.duration}</span>
+              </div>
+
+              <div
+                className="relative border border-[#F3F0E9]/20 bg-[#0e0f11] p-1.5 cursor-pointer overflow-hidden shadow-2xl"
+                onClick={() => setActiveProject(p4)}
+              >
+                <CinematicFrame
+                  type="mg-1"
+                  aspectRatio="16/9"
+                  className="transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="inline-flex items-center gap-2 px-6 py-3 bg-[#D9A45B] text-[#070809] font-mono-tech text-xs font-bold uppercase tracking-wider">
+                    <Play className="w-3.5 h-3.5 fill-current" />
+                    <span>INSPECT EVIDENCE DOSSIER</span>
+                  </div>
+                </div>
+              </div>
+
+              <p className="font-sans-editorial text-sm text-[#A6A6A2] leading-relaxed">
+                {p4.description}
+              </p>
+            </article>
+
+            {/* MG Demo 2: 3D Topographic Terrain */}
+            <article className="group space-y-5">
+              <div className="flex items-baseline justify-between border-b border-[#F3F0E9]/10 pb-3">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-display-brutal text-3xl text-[#D9A45B] font-extrabold">05</span>
+                  <div>
+                    <span className="font-mono-tech text-[10px] text-[#D9A45B] uppercase tracking-widest block">{p5.category}</span>
+                    <h3 className="font-serif-editorial text-2xl sm:text-3xl text-[#F3F0E9] group-hover:text-[#D9A45B] transition-colors italic">
+                      {p5.title}
+                    </h3>
+                  </div>
+                </div>
+                <span className="font-mono-tech text-xs text-[#A6A6A2]">{p5.duration}</span>
+              </div>
+
+              <div
+                className="relative border border-[#F3F0E9]/20 bg-[#0e0f11] p-1.5 cursor-pointer overflow-hidden shadow-2xl"
+                onClick={() => setActiveProject(p5)}
+              >
+                <CinematicFrame
+                  type="mg-2"
+                  aspectRatio="16/9"
+                  className="transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="inline-flex items-center gap-2 px-6 py-3 bg-[#D9A45B] text-[#070809] font-mono-tech text-xs font-bold uppercase tracking-wider">
+                    <Play className="w-3.5 h-3.5 fill-current" />
+                    <span>INSPECT 3D TOPOGRAPHY</span>
+                  </div>
+                </div>
+              </div>
+
+              <p className="font-sans-editorial text-sm text-[#A6A6A2] leading-relaxed">
+                {p5.description}
+              </p>
+            </article>
+          </div>
+
+          {/* PROJECT 06: MULTI-PERSPECTIVE CHRONOLOGY TIMELINE */}
+          <article className="group relative">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-6">
+              <div className="flex items-baseline gap-4">
+                <span className="font-display-brutal text-4xl sm:text-6xl text-[#D9A45B] font-extrabold">
+                  06
+                </span>
+                <div>
+                  <span className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-widest block">
+                    {p6.category}
+                  </span>
+                  <h3 className="font-serif-editorial text-3xl sm:text-5xl text-[#F3F0E9] group-hover:text-[#D9A45B] transition-colors italic">
+                    {p6.title}
+                  </h3>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 font-mono-tech text-xs text-[#A6A6A2]">
+                <span>{p6.duration} · SYNCHRONIZED MULTI-TRACK</span>
+                <span className="px-2 py-0.5 border border-[#F3F0E9]/20 uppercase text-[10px] bg-[#0f1012]">
+                  {p6.projectType}
+                </span>
+              </div>
+            </div>
+
+            <div
+              className="relative w-full border border-[#F3F0E9]/20 bg-[#0e0f11] p-2 cursor-pointer overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.95)]"
+              onClick={() => setActiveProject(p6)}
+            >
+              <CinematicFrame
+                type="timeline-1"
+                aspectRatio="21/9"
+                className="transition-transform duration-1000 group-hover:scale-[1.015]"
+              />
+
+              <div className="p-4 bg-[#090a0b] border-t border-[#F3F0E9]/10 flex flex-col md:flex-row md:items-center justify-between gap-4 font-mono-tech text-xs text-[#A6A6A2]">
+                <p className="max-w-3xl font-sans-editorial text-sm text-[#A6A6A2] leading-relaxed">
+                  {p6.description}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setActiveProject(p6)}
+                  className="inline-flex items-center gap-2 text-[#D9A45B] hover:underline uppercase shrink-0 font-bold"
+                >
+                  <span>INSPECT SYNCHRONIZATION</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </article>
         </div>
 
-        {/* Project Authenticity Notice */}
-        <div className="mt-14 p-4 border border-[#F3F0E9]/[0.08] bg-[#141517] rounded-[2px] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 font-mono-tech text-xs text-[#A6A6A2]/80">
-          <span>{selectedWork.note}</span>
-          <span className="text-[#A6A6A2]/50 text-[11px]">
-            BURARI CASE STUDY: IN PRODUCTION (SEPARATE RELEASE)
+        {/* Studio Disclosure Note */}
+        <div className="mt-20 p-4 border border-[#F3F0E9]/15 bg-[#090a0b] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono-tech text-xs text-[#A6A6A2]">
+          <span className="text-[#F3F0E9]">[ SPEC DISCLOSURE ] // {selectedWork.note}</span>
+          <span className="text-[#D9A45B] text-[11px] uppercase tracking-wider">
+            BURARI CASE STUDY: IN ACTIVE PRODUCTION (SEPARATE RELEASE)
           </span>
         </div>
       </div>
 
-      {/* Project Modal */}
+      {/* Accessible Interactive Modal */}
       <ProjectModal
         project={activeProject}
         onClose={() => setActiveProject(null)}

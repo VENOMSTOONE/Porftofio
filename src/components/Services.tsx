@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export const Services: React.FC = () => {
@@ -9,66 +10,64 @@ export const Services: React.FC = () => {
   return (
     <section
       id="services"
-      aria-label="Documentary Editing Services"
-      className="py-24 lg:py-36 border-b border-[#F3F0E9]/[0.08] bg-[#101112]"
+      aria-label="Post-Production Capabilities"
+      className="py-28 lg:py-40 border-b border-[#F3F0E9]/15 bg-[#090a0b] relative"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="w-full px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16 lg:mb-24">
-          <div className="lg:col-span-8">
-            <div className="flex items-center space-x-2 font-mono-tech text-xs uppercase tracking-[0.2em] text-[#D9A45B] mb-4">
-              <span>04 // CAPABILITIES</span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 mb-16 border-b border-[#F3F0E9]/15">
+          <div className="space-y-3">
+            <div className="flex items-center gap-2 font-mono-tech text-xs uppercase tracking-[0.25em] text-[#D9A45B]">
+              <span>[ 04 // DISCIPLINES ]</span>
               <span className="text-[#A6A6A2]/40">·</span>
-              <span>SPECIALIZED POST-PRODUCTION</span>
+              <span>SPECIALIZED CAPABILITIES</span>
             </div>
-            <h2 className="font-serif-editorial text-4xl sm:text-5xl md:text-6xl font-normal text-[#F3F0E9] tracking-tight">
+            <h2 className="font-display-brutal text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase tracking-[-0.04em] text-[#F3F0E9]">
               {services.heading}
             </h2>
           </div>
-          <div className="lg:col-span-4">
-            <p className="text-sm sm:text-base text-[#A6A6A2] font-sans-editorial leading-relaxed">
-              {services.subheading}
-            </p>
+          <div className="max-w-md font-sans-editorial text-sm sm:text-base text-[#A6A6A2] leading-relaxed">
+            {services.subheading}
           </div>
         </div>
 
-        {/* Editorial Directory Layout (Hairline Rows) */}
-        <div className="border-t border-[#F3F0E9]/[0.08] divide-y divide-[#F3F0E9]/[0.08]">
+        {/* Monolithic Editorial Service Directory */}
+        <div className="divide-y divide-[#F3F0E9]/15 border-t border-b border-[#F3F0E9]/15">
           {services.items.map((service) => (
             <div
               key={service.number}
-              className="py-10 lg:py-14 group hover:bg-[#141517]/50 transition-colors px-4 -mx-4 rounded-[2px]"
+              className="py-12 lg:py-16 group hover:bg-[#0e0f12] transition-colors duration-300"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                {/* Number (2 cols) */}
+                {/* Index Numeral (2 cols) */}
                 <div className="lg:col-span-2">
-                  <span className="font-serif-editorial text-4xl text-[#D9A45B] italic">
+                  <span className="font-display-brutal text-4xl sm:text-6xl font-extrabold text-[#D9A45B]">
                     {service.number}
                   </span>
                 </div>
 
-                {/* Title & Core Philosophy (5 cols) */}
+                {/* Service Title & Core Philosophy (5 cols) */}
                 <div className="lg:col-span-5 space-y-3">
-                  <h3 className="font-serif-editorial text-3xl sm:text-4xl text-[#F3F0E9] group-hover:text-[#D9A45B] transition-colors leading-[1.1]">
+                  <h3 className="font-display-brutal text-3xl sm:text-4xl text-[#F3F0E9] group-hover:text-[#D9A45B] transition-colors uppercase font-bold leading-tight">
                     {service.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-[#A6A6A2] font-sans-editorial leading-relaxed">
+                  <p className="font-sans-editorial text-sm sm:text-base text-[#A6A6A2] leading-relaxed">
                     {service.description}
                   </p>
                 </div>
 
-                {/* Deliverables (5 cols) */}
-                <div className="lg:col-span-5 lg:pl-8 space-y-3">
-                  <div className="font-mono-tech text-xs text-[#A6A6A2]/60 uppercase tracking-wider">
-                    Story Deliverables:
-                  </div>
-                  <ul className="space-y-2">
+                {/* Craft Deliverables (5 cols) */}
+                <div className="lg:col-span-5 lg:pl-10 space-y-3">
+                  <span className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-wider block font-semibold">
+                    Core Craft Focus:
+                  </span>
+                  <ul className="space-y-2.5">
                     {service.deliverables.map((item) => (
                       <li
                         key={item}
-                        className="flex items-start gap-2.5 text-xs sm:text-sm text-[#F3F0E9]/85 font-sans-editorial"
+                        className="flex items-start gap-3 text-sm text-[#F3F0E9]/90 font-sans-editorial"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#D9A45B] mt-1.5 shrink-0" />
+                        <span className="w-1.5 h-1.5 bg-[#D9A45B] mt-2 shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}

@@ -14,37 +14,38 @@ export const Footer: React.FC = () => {
   const navLinks = [
     { label: 'Selected Work', href: '#work' },
     { label: 'Editorial Reasoning', href: '#problems' },
-    { label: 'Sequence Breakdown', href: '#breakdown' },
-    { label: 'Services', href: '#services' },
-    { label: 'Workflow', href: '#process' },
-    { label: 'About Studio', href: '#about' },
-    { label: 'Discuss Project', href: '#contact' },
+    { label: 'Anatomy of a Cut', href: '#breakdown' },
+    { label: 'Capabilities', href: '#services' },
+    { label: 'Pipeline', href: '#process' },
+    { label: 'Studio Manifesto', href: '#about' },
+    { label: 'Initiate Cut', href: '#contact' },
   ];
 
   return (
     <footer
       aria-label="Studio Footer"
-      className="bg-[#090a0b] border-t border-[#F3F0E9]/[0.08] pt-20 pb-12 text-[#A6A6A2]"
+      className="bg-[#050607] border-t border-[#F3F0E9]/15 pt-20 pb-12 text-[#A6A6A2] select-none"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[#F3F0E9]/[0.08]">
+      <div className="w-full px-6 sm:px-8 lg:px-12">
+        {/* Top Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[#F3F0E9]/10">
           {/* Brand Info (6 cols) */}
           <div className="md:col-span-6 space-y-4">
-            <span className="font-serif-editorial text-3xl font-normal text-[#F3F0E9] block">
+            <span className="font-display-brutal text-3xl font-extrabold text-[#F3F0E9] block tracking-tight">
               {brand.name}
             </span>
-            <p className="text-sm text-[#A6A6A2] max-w-md font-sans-editorial leading-relaxed">
-              Specialized documentary video editing, purposeful visual storytelling, motion graphics, and atmospheric sound design for YouTube mystery and investigative creators.
+            <p className="font-sans-editorial text-sm text-[#A6A6A2] max-w-md leading-relaxed">
+              Cinematic documentary video editing, purposeful visual storytelling, motion graphics, and atmospheric sound design for YouTube mystery and investigative creators.
             </p>
-            <div className="font-mono-tech text-xs text-[#D9A45B]">
+            <div className="font-mono-tech text-xs text-[#D9A45B] tracking-wider uppercase">
               MYSTERY · INVESTIGATIVE · HISTORICAL ENIGMAS
             </div>
           </div>
 
           {/* Navigation (3 cols) */}
           <div className="md:col-span-3 space-y-3">
-            <div className="font-mono-tech text-xs uppercase tracking-wider text-[#F3F0E9] font-medium">
-              Navigation
+            <div className="font-mono-tech text-xs uppercase tracking-widest text-[#F3F0E9] font-bold">
+              [ INDEX ]
             </div>
             <ul className="space-y-2 text-xs font-mono-tech">
               {navLinks.map((link) => (
@@ -60,10 +61,10 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Profiles & Contact (3 cols) */}
+          {/* Channels & Action (3 cols) */}
           <div className="md:col-span-3 space-y-3">
-            <div className="font-mono-tech text-xs uppercase tracking-wider text-[#F3F0E9] font-medium">
-              Inquiries & Channels
+            <div className="font-mono-tech text-xs uppercase tracking-widest text-[#F3F0E9] font-bold">
+              [ DISPATCH ]
             </div>
             <ul className="space-y-2 text-xs font-mono-tech">
               {brand.profileLinks.map((item) => (
@@ -85,25 +86,32 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={scrollToTop}
-                className="inline-flex items-center gap-2 text-xs font-mono-tech text-[#A6A6A2] hover:text-[#F3F0E9] transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-mono-tech text-[#A6A6A2] hover:text-[#F3F0E9] transition-colors border border-[#F3F0E9]/15 px-3 py-1.5 rounded-[1px]"
                 aria-label="Return to top of page"
               >
                 <ArrowUp className="w-3.5 h-3.5 text-[#D9A45B]" />
-                <span>Return to top</span>
+                <span>RETURN TO TOP</span>
               </button>
             </div>
           </div>
         </div>
 
+        {/* Monumental Brutalist Footer Wordmark */}
+        <div className="pt-16 pb-8 overflow-hidden select-none">
+          <div className="font-display-brutal text-[14vw] font-extrabold uppercase text-[#F3F0E9]/[0.06] hover:text-[#D9A45B]/15 transition-colors leading-[0.75] tracking-[-0.06em] whitespace-nowrap text-center">
+            VAIBHAV LABS
+          </div>
+        </div>
+
         {/* Footer Bottom Strip */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-mono-tech text-[#A6A6A2]/60 gap-4">
+        <div className="pt-6 border-t border-[#F3F0E9]/[0.08] flex flex-col sm:flex-row items-center justify-between text-xs font-mono-tech text-[#A6A6A2]/60 gap-4">
           <div>
-            © {new Date().getFullYear()} {brand.name}. All rights reserved.
+            © {new Date().getFullYear()} {brand.name}. ALL RIGHTS RESERVED.
           </div>
           <div className="flex items-center gap-4 text-[11px]">
-            <span>Story-First Visual Architecture</span>
+            <span>STORY-FIRST VISUAL ARCHITECTURE</span>
             <span>·</span>
-            <span>Independent Documentary Studio</span>
+            <span>INDEPENDENT POST-PRODUCTION STUDIO</span>
           </div>
         </div>
       </div>
