@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { Mail, Send, AlertCircle, Copy, Check, Clock, ShieldCheck, Crosshair } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
@@ -104,47 +105,62 @@ export const Contact: React.FC = () => {
     <section
       id="contact"
       aria-label="Project Inquiries"
-      className="py-28 lg:py-40 border-b border-[#F3F0E9]/15 bg-[#070809] relative"
+      className="py-28 lg:py-40 border-b border-white/[0.14] bg-[#000000] relative"
     >
       <div className="w-full px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 mb-16 border-b border-[#F3F0E9]/15">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 mb-16 border-b border-white/[0.14]"
+        >
           <div className="space-y-3">
             <div className="flex items-center gap-2 font-mono-tech text-xs uppercase tracking-[0.25em] text-[#D9A45B]">
-              <span>[ 07 // INITIATE TRANSMISSION ]</span>
-              <span className="text-[#A6A6A2]/40">·</span>
-              <span>COMMISSION INQUIRY</span>
+              <span>[ 05 // CONTACT ]</span>
+              <span className="text-[#9A9A9A]/50">·</span>
+              <span>START A CONVERSATION</span>
             </div>
-            <h2 className="font-display-brutal text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase tracking-[-0.04em] text-[#F3F0E9]">
-              {contact.heading}
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-[-0.03em] text-[#F3F0E9]">
+              Have a Story{' '}
+              <span className="font-serif-editorial italic font-normal text-[#D9A45B]">
+                Worth Telling?
+              </span>
             </h2>
           </div>
-          <div className="max-w-md font-sans-editorial text-sm sm:text-base text-[#A6A6A2] leading-relaxed">
+          <div className="max-w-md font-sans text-sm sm:text-base text-[#9A9A9A] leading-relaxed font-light">
             {contact.subheading}
           </div>
-        </div>
+        </motion.div>
 
         {/* Form and Contact Specifications */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Brutalist Commission Form (7 cols) */}
-          <div className="lg:col-span-7 p-8 sm:p-12 border border-[#F3F0E9]/20 bg-[#0c0d0f] relative">
+          {/* Refined Project Inquiry Form (7 cols) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 p-8 sm:p-12 border border-white/[0.14] bg-[#101112] relative shadow-2xl"
+          >
             {isReadyToSend ? (
               <div className="space-y-6">
                 <div className="space-y-2">
                   <span className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-widest block font-bold">
-                    [ INQUIRY TELEMETRY LOGGED ]
+                    [ INQUIRY PRE-FORMATTED ]
                   </span>
-                  <h3 className="font-display-brutal text-3xl sm:text-4xl text-[#F3F0E9] font-bold uppercase">
-                    Ready for Transmission
+                  <h3 className="font-sans text-2xl sm:text-3xl text-[#F3F0E9] font-bold uppercase tracking-tight">
+                    Ready to Send
                   </h3>
-                  <p className="font-sans-editorial text-sm text-[#A6A6A2] leading-relaxed">
-                    Parameters for <strong className="text-[#F3F0E9]">{formData.name}</strong> ({formData.projectType}, {formData.videoLength}) are pre-formatted. Click below to launch your email client with these parameters pre-filled.
+                  <p className="font-sans text-sm text-[#9A9A9A] leading-relaxed font-light">
+                    Inquiry details for <strong className="text-[#F3F0E9] font-medium">{formData.name}</strong> ({formData.projectType}, {formData.videoLength}) are pre-formatted. Click below to launch your email client with these details pre-filled.
                   </p>
                 </div>
 
-                <div className="p-5 bg-[#070809] border border-[#F3F0E9]/10 font-mono-tech text-xs text-[#A6A6A2] space-y-2">
+                <div className="p-5 bg-[#000000] border border-white/[0.1] font-mono-tech text-xs text-[#9A9A9A] space-y-2">
                   <div><strong className="text-[#F3F0E9]">TARGET:</strong> {brand.contactEmail}</div>
-                  <div><strong className="text-[#F3F0E9]">SUBJECT:</strong> Documentary Project Cut: {formData.projectType} — {formData.name}</div>
+                  <div><strong className="text-[#F3F0E9]">SUBJECT:</strong> Documentary Project: {formData.projectType} — {formData.name}</div>
                   <div><strong className="text-[#F3F0E9]">DURATION:</strong> {formData.videoLength}</div>
                 </div>
 
@@ -152,18 +168,18 @@ export const Contact: React.FC = () => {
                   <button
                     type="button"
                     onClick={openMailClient}
-                    className="inline-flex items-center gap-2 px-8 py-4 bg-[#D9A45B] hover:bg-[#e5b36c] text-[#070809] font-mono-tech text-xs font-bold uppercase tracking-widest transition-colors shadow-2xl"
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-[#D9A45B] hover:bg-[#e5b36c] text-[#000000] font-mono-tech text-xs font-bold uppercase tracking-widest transition-colors shadow-2xl"
                   >
                     <Mail className="w-4 h-4" />
-                    <span>LAUNCH MAIL TRANSMISSION</span>
+                    <span>OPEN EMAIL CLIENT ↗</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={() => setIsReadyToSend(false)}
-                    className="text-xs font-mono-tech text-[#A6A6A2] hover:text-[#F3F0E9] underline"
+                    className="text-xs font-mono-tech text-[#9A9A9A] hover:text-[#F3F0E9] underline"
                   >
-                    Modify Parameters
+                    Edit Details
                   </button>
                 </div>
               </div>
@@ -297,43 +313,49 @@ export const Contact: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-3 py-5 bg-[#D9A45B] hover:bg-[#e5b36c] text-[#070809] font-mono-tech text-xs font-bold uppercase tracking-widest transition-colors shadow-2xl"
+                  className="w-full inline-flex items-center justify-center gap-3 py-5 bg-[#D9A45B] hover:bg-[#e5b36c] text-[#000000] font-mono-tech text-xs font-bold uppercase tracking-widest transition-colors shadow-2xl"
                 >
                   <Crosshair className="w-4 h-4" />
-                  <span>TRANSMIT PROJECT INQUIRY</span>
+                  <span>DISCUSS YOUR PROJECT ↗</span>
                 </button>
               </form>
             )}
-          </div>
+          </motion.div>
 
-          {/* Right Column: Direct Telemetry & Standards (5 cols) */}
-          <div className="lg:col-span-5 space-y-8">
-            <div className="p-8 border border-[#F3F0E9]/20 bg-[#0c0d0f] space-y-4">
+          {/* Right Column: Direct Dispatch & Standards (5 cols) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 space-y-8"
+          >
+            <div className="p-8 border border-white/[0.14] bg-[#101112] space-y-4 shadow-2xl">
               <span className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-widest block font-bold">
                 DIRECT STUDIO DISPATCH
               </span>
-              <h3 className="font-display-brutal text-2xl text-[#F3F0E9] uppercase font-bold">
+              <h3 className="font-sans text-2xl text-[#F3F0E9] uppercase font-bold tracking-tight">
                 Prefer Direct Email?
               </h3>
-              <p className="font-sans-editorial text-sm text-[#A6A6A2] leading-relaxed">
+              <p className="font-sans text-sm text-[#9A9A9A] leading-relaxed font-light">
                 If you already have a script document, footage drive link, or rough timeline ready for evaluation:
               </p>
-              <div className="pt-2 flex items-center justify-between p-4 bg-[#070809] border border-[#F3F0E9]/15">
+              <div className="pt-2 flex items-center justify-between p-4 bg-[#000000] border border-white/[0.14]">
                 <code className="text-xs sm:text-sm text-[#F3F0E9] font-mono-tech select-all font-bold">
                   {brand.contactEmail}
                 </code>
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="p-1.5 text-[#A6A6A2] hover:text-[#D9A45B] transition-colors"
+                  className="p-1.5 text-[#9A9A9A] hover:text-[#D9A45B] transition-colors"
                   aria-label="Copy email address"
                 >
-                  {copiedEmail ? <Check className="w-4 h-4 text-[#D9A45B]" /> : <Copy className="w-4 h-4 text-[#A6A6A2]" />}
+                  {copiedEmail ? <Check className="w-4 h-4 text-[#D9A45B]" /> : <Copy className="w-4 h-4 text-[#9A9A9A]" />}
                 </button>
               </div>
             </div>
 
-            <div className="p-8 border border-[#F3F0E9]/20 bg-[#0c0d0f] space-y-5">
+            <div className="p-8 border border-white/[0.14] bg-[#101112] space-y-5 shadow-2xl">
               <span className="font-mono-tech text-xs text-[#D9A45B] uppercase tracking-widest block font-bold">
                 STANDARDS OF ENGAGEMENT
               </span>
@@ -344,7 +366,7 @@ export const Contact: React.FC = () => {
                     <div className="text-xs font-mono-tech text-[#F3F0E9] font-bold uppercase">
                       Response Window
                     </div>
-                    <p className="text-xs text-[#A6A6A2] font-sans-editorial leading-relaxed mt-0.5">
+                    <p className="text-xs text-[#9A9A9A] font-sans leading-relaxed mt-0.5 font-light">
                       I review and respond to serious documentary inquiries within 24 to 48 hours.
                     </p>
                   </div>
@@ -356,14 +378,14 @@ export const Contact: React.FC = () => {
                     <div className="text-xs font-mono-tech text-[#F3F0E9] font-bold uppercase">
                       Strict Confidentiality
                     </div>
-                    <p className="text-xs text-[#A6A6A2] font-sans-editorial leading-relaxed mt-0.5">
+                    <p className="text-xs text-[#9A9A9A] font-sans leading-relaxed mt-0.5 font-light">
                       All research, scripts, and investigative findings remain strictly confidential under standard NDA principles.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

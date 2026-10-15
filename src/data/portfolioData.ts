@@ -1,3 +1,5 @@
+import { getAssetPath } from '../utils/assetPath';
+
 export interface ProjectItem {
   id: string;
   title: string;
@@ -7,6 +9,7 @@ export interface ProjectItem {
   duration: string;
   description: string;
   videoUrl?: string; // Replaceable video path or YouTube/Vimeo embed URL
+  posterUrl?: string; // High-resolution video poster keyframe
   thumbnailPlaceholderColor?: string;
   aspectRatio: string;
   techniques: string[];
@@ -143,147 +146,176 @@ export const portfolioData: PortfolioData = {
     label: 'DOCUMENTARY VIDEO EDITOR · MYSTERY & INVESTIGATIVE',
     headline: 'Some stories demand more than just an edit.',
     supportingCopy:
-      'I transform scripts and narration into cinematic mystery and investigative documentaries through deliberate pacing, compelling visuals, documentary motion graphics, and immersive sound design.',
-    primaryCta: 'Explore My Work',
-    secondaryCta: 'Discuss a Project',
+      'I transform scripts and narration into cinematic mystery and investigative documentaries through compelling visuals, purposeful motion graphics, and immersive sound design.',
+    primaryCta: 'EXPLORE MY WORK',
+    secondaryCta: 'DISCUSS A PROJECT',
   },
 
   selectedWork: {
-    heading: 'Selected Work',
-    subheading: 'Visual experiments and documentary-style edits built around atmosphere, evidence, and storytelling.',
+    heading: 'Stories told through visuals.',
+    subheading: 'A selection of documentary-style edits exploring atmosphere, evidence, pacing, and visual storytelling.',
     note: 'All portfolio samples represent genuine demonstrations of documentary editing capability, visual reconstruction, and motion graphics craftsmanship.',
     projects: [
       {
-        id: 'intro-demo-1',
-        title: 'Intro Demo 1 — Cold Open & Narrative Hook',
-        assetKey: 'Intro Demo 1',
-        category: 'Cinematic Cold Open',
-        projectType: 'Editing Demonstration',
-        duration: '01:45',
-        description:
-          'Demonstrates high-tension hook pacing: establishing an unexplained disappearance using gradual visual escalation, atmospheric drone sound design, and understated typography.',
-        videoUrl: '', // PLACEHOLDER: Insert path e.g. '/videos/intro-demo-1.mp4' or YouTube URL
-        aspectRatio: '16:9',
-        techniques: ['Atmospheric slow-burn pacing', 'Sub-bass narrative tension', 'Restrained title treatment'],
-        audioNotes: 'Custom drone build layered with archival radio static and low-frequency heartbeat pulse.',
-        visualTreatment: 'Desaturated 35mm tone, subtle vignette, and deliberate contrast curve for night exterior scene.',
-      },
-      {
         id: 'intro-demo-2',
-        title: 'Intro Demo 2 — The Investigative Conflict Hook',
+        title: 'The Hollow Creek Case — Archive Record 1987',
         assetKey: 'Intro Demo 2',
-        category: 'Investigative Hook',
+        category: 'Cinematic Cold Open & Evidence Hook',
         projectType: 'Editing Demonstration',
-        duration: '02:10',
+        duration: '00:35',
         description:
-          'Deconstructs conflicting official radar logs against eyewitness testimonies, using synchronized split-screens and optical audio pulses to highlight inconsistencies.',
-        videoUrl: '', // PLACEHOLDER: Insert path e.g. '/videos/intro-demo-2.mp4'
+          'Demonstrates relentless narrative tension: an aged 1980 family portrait slowly pushes in before flash-cutting to a shadowy detective corkboard under an anglepoise lamp, revealing declassified 1987 subterranean coordinates that were never on the official case map.',
+        videoUrl: getAssetPath('/videos/intro-demo-2.mp4'),
+        posterUrl: getAssetPath('/posters/intro-demo-2.jpg'),
         aspectRatio: '16:9',
-        techniques: ['Synchronized dual-evidence cuts', 'Audio waveform visualization', 'Pacing cadence for voiceover'],
-        audioNotes: 'Air traffic recording frequency isolation with tense analog synthesizer drone.',
-        visualTreatment: 'CRT monitor scanlines, monochrome satellite maps with amber evidence callouts.',
-      },
-      {
-        id: 'intro-demo-3',
-        title: 'Intro Demo 3 — Historical Mystery & Archival Mood',
-        assetKey: 'Intro Demo 3',
-        category: 'Historical Atmosphere',
-        projectType: 'Editing Demonstration',
-        duration: '01:30',
-        description:
-          'Blends 1970s microfiche documents, archival photographs, and rhythmic acoustic percussion to bridge an investigative past with present-day findings.',
-        videoUrl: '', // PLACEHOLDER: Insert path e.g. '/videos/intro-demo-3.mp4'
-        aspectRatio: '16:9',
-        techniques: ['Microfiche & newspaper reconstruction', 'Parallax photo restoration', 'Rhythmic pacing cuts'],
-        audioNotes: 'Tactile reel-to-reel tape mechanical clicks paired with deep bowed cello chords.',
-        visualTreatment: 'Kodak Tri-X grain simulation, warm archival sepia tint, and subtle gate-weave.',
-      },
-      {
-        id: 'mg-demo-1',
-        title: 'MG Demo 1 — Forensic Evidence & Declassified Logs',
-        assetKey: 'MG Demo 1',
-        category: 'Documentary Motion Graphics',
-        projectType: 'Editing Demonstration',
-        duration: '00:55',
-        description:
-          'Clean, understated document redaction reveals, tactile case file handling, and typewriter text animation designed to convey complex paper trails with clarity.',
-        videoUrl: '', // PLACEHOLDER: Insert path e.g. '/videos/mg-demo-1.mp4'
-        aspectRatio: '16:9',
-        techniques: ['Tactile paper physics', 'Dynamic redaction reveals', 'Hierarchical information design'],
-        audioNotes: 'Heavy typewriter mechanical strikes and paper rustle recorded on Sennheiser MKH416.',
-        visualTreatment: 'High-resolution scan textures, selective DOF blurring, and amber highlighter treatment.',
-      },
-      {
-        id: 'mg-demo-2',
-        title: 'MG Demo 2 — Cartographic Route & Geospatial Tracking',
-        assetKey: 'MG Demo 2',
-        category: 'Maps & Geospatial Graphics',
-        projectType: 'Editing Demonstration',
-        duration: '01:15',
-        description:
-          'High-contrast 3D topographic tracking illustrating harsh mountain terrain, search party search sectors, and the exact coordinate of the last confirmed sighting.',
-        videoUrl: '', // PLACEHOLDER: Insert path e.g. '/videos/mg-demo-2.mp4'
-        aspectRatio: '16:9',
-        techniques: ['Topographic heightmap camera moves', 'Vector coordinate plotting', 'Elevation graph overlays'],
-        audioNotes: 'Wind telemetry gusts, faint satellite ping resonances, and sub-rumble terrain bass.',
-        visualTreatment: 'Dark slate cartographic palette with glowing amber vector routes and GPS timestamps.',
+        techniques: [
+          'Sub-second match cuts from portrait to crime scene',
+          'Tactile corkboard evidence & red pin choreography',
+          'Split-screen subterranean laser alignment reveal',
+        ],
+        audioNotes: 'Deep sub-bass drone (38Hz) fused with analog tape flutter, anglepoise lamp mechanical switches, and abrupt silence drops.',
+        visualTreatment: 'Desaturated Kodachrome archive warmth, heavy optical vignette, anamorphic lens flare, and warm tungsten spotlighting.',
       },
       {
         id: 'timeline-1',
-        title: 'Timeline 1 — Multi-Perspective Chronology',
+        title: 'The Burari Deaths — 11 Victims Forensic Timeline',
         assetKey: 'Timeline 1',
-        category: 'Evidence & Chronology',
+        category: 'Forensic Investigation & Chronology',
         projectType: 'Editing Demonstration',
-        duration: '01:40',
+        duration: '00:14',
         description:
-          'Multi-track synchronized visual timeline correlating simultaneous witness accounts, emergency dispatch logs, and cell tower triangulation in a single coherent sequence.',
-        videoUrl: '', // PLACEHOLDER: Insert path e.g. '/videos/timeline-1.mp4'
+          'A rapid, chilling multi-track visual timeline of the infamous Burari mass death investigation in Delhi (28.7041° N, 77.2017° E). Synthesizes satellite surveillance grids, 11 victim halftone portraits, crime scene iron rod evidence, and taut red string connections into a coherent investigative sequence.',
+        videoUrl: getAssetPath('/videos/timeline-1.mp4'),
+        posterUrl: getAssetPath('/posters/timeline-1.jpg'),
         aspectRatio: '16:9',
-        techniques: ['Parallel event tracking', 'Timecode synchronization', 'Information hierarchy'],
-        audioNotes: 'Subtle clock ticking motif morphed into harmonic synthesizer pulses as time expires.',
-        visualTreatment: 'Minimalist dark grid, synchronized vertical cursor, and contrasting eyewitness cards.',
+        techniques: [
+          'GPS coordinate telemetry & satellite tracking',
+          'Multi-subject halftone portrait array synchronization',
+          'Taut evidence string 3D spatial mapping',
+        ],
+        audioNotes: 'Low-pass rhythmic clock pulses interwoven with high-frequency metallic evidence string tensions and sub-harmonic impacts.',
+        visualTreatment: 'Monochrome halftone print textures, high-contrast satellite contour grids, and striking red vector evidence overlays.',
+      },
+      {
+        id: 'mg-demo-2',
+        title: 'October 2, 1940 Aviation Mystery — Blueprints & Forensic Lens',
+        assetKey: 'MG Demo 2',
+        category: '3D Documentary Motion Graphics',
+        projectType: 'Editing Demonstration',
+        duration: '00:11',
+        description:
+          'Tactile 3D investigative workspace reconstruction: an optical magnifying glass glides with realistic light refraction over declassified WWII aircraft schematics, period newspaper headlines ("HUNDREDS SEE TRAGIC SPECTACLE"), and authentic aircraft spotter cards to isolate structural crash factors.',
+        videoUrl: getAssetPath('/videos/mg-demo-2.mp4'),
+        posterUrl: getAssetPath('/posters/mg-demo-2.jpg'),
+        aspectRatio: '16:9',
+        techniques: [
+          'Physically-based optical glass refraction & distortion',
+          'Tactile archival blueprint & newsprint rendering',
+          'Dynamic macro depth of field camera drift',
+        ],
+        audioNotes: 'Subtle glass-on-paper friction, mechanical camera aperture clicks, and a distant atmospheric 1940s engine drone.',
+        visualTreatment: 'Aged cyanotype blueprint hues, textured newsprint paper grain, warm desk illumination, and shallow macro focus.',
+      },
+      {
+        id: 'intro-demo-1',
+        title: 'Signal 104.7 MHz — The 2:17 AM Mountain Transmission',
+        assetKey: 'Intro Demo 1',
+        category: 'Unexplained Mystery & Radar Analysis',
+        projectType: 'Editing Demonstration',
+        duration: '00:29',
+        description:
+          'Constructs eerie atmospheric dread surrounding an anomalous 2:17 AM transmission detected at 43°N, 20°E. Bridges CRT radar sweeps, audio frequency oscilloscopes ("NO VOICE — NO IDENTIFICATION"), and 3D terrain elevation maps to illustrate an isolated valley dead zone.',
+        videoUrl: getAssetPath('/videos/intro-demo-1.mp4'),
+        posterUrl: getAssetPath('/posters/intro-demo-1.jpg'),
+        aspectRatio: '16:9',
+        techniques: [
+          'CRT phosphor radar sweep & scanline simulation',
+          'Synchronized audio waveform flatline visualization',
+          '3D topographic elevation wireframe camera flight',
+        ],
+        audioNotes: '104.7 MHz frequency whine, atmospheric VHF radio static, eerie sine tone fluctuations, and deep mountain wind gusts.',
+        visualTreatment: 'Amber phosphor monochrome CRT monitors, vector elevation wireframes, and dark slate cartographic styling.',
+      },
+      {
+        id: 'mg-demo-1',
+        title: 'The $2M Cartel Wire — Global Asset Tracing',
+        assetKey: 'MG Demo 1',
+        category: 'Kinetic Cartography & Financial Tracking',
+        projectType: 'Editing Demonstration',
+        duration: '00:15',
+        description:
+          'A dynamic global forensic money trail deconstructing a $2,000,000 wire transfer. Animates interconnected flight paths and banking routes connecting cartel leadership to African safe houses, China-based agents, and $392,722 split mule accounts in real-time.',
+        videoUrl: getAssetPath('/videos/mg-demo-1.mp4'),
+        posterUrl: getAssetPath('/posters/mg-demo-1.jpg'),
+        aspectRatio: '16:9',
+        techniques: [
+          'Kinetic vector arc routing across dark orthographic projection',
+          'Real-time financial metric & mule account counters',
+          'High-velocity hierarchical information typography',
+        ],
+        audioNotes: 'Fast electronic banking data bursts, encrypted digital chatter, and sharp tactile telemetry clicks.',
+        visualTreatment: 'Deep obsidian global projection with electric amber financial trajectories and crisp white monetary callouts.',
+      },
+      {
+        id: 'intro-demo-3',
+        title: 'The Vanishing Record — Dr. Elias Morrow Investigation',
+        assetKey: 'Intro Demo 3',
+        category: 'Prestige Archival & Character Narrative',
+        projectType: 'Editing Demonstration',
+        duration: '00:33',
+        description:
+          'Prestige documentary pacing: seamlessly weaves an on-camera interview with historian Dr. Elias Morrow alongside haunting macro B-roll of an abandoned manor room—peeling floral wallpaper, floating dust motes, and forgotten archival records—establishing profound emotional gravity.',
+        videoUrl: getAssetPath('/videos/intro-demo-3.mp4'),
+        posterUrl: getAssetPath('/posters/intro-demo-3.jpg'),
+        aspectRatio: '16:9',
+        techniques: [
+          'Interview cadence matched to contemplative B-roll cuts',
+          'Atmospheric environmental decay & dust motes compositing',
+          'Seamless transition from talking head to archival memory',
+        ],
+        audioNotes: 'Clean, intimate interview dialogue layered over a melancholic solo cello motif and atmospheric room tone.',
+        visualTreatment: 'Rich cinematic 35mm grain, subdued natural window lighting, and painterly contrast in dilapidated architectural spaces.',
       },
     ],
   },
 
   problems: {
-    heading: 'Problems I Solve',
-    subheading: 'Investigative documentaries fail when edits are treated like standard video montages. Here is how I solve the four most critical storytelling breakdowns.',
+    heading: 'Every Story Has a Visual Language.',
+    subheading: 'How a disciplined documentary editing approach resolves four fundamental storytelling challenges.',
     items: [
       {
         number: '01',
         title: 'Narration Without Visual Momentum',
-        challenge: 'Long stretches of narration can feel visually repetitive when editors rely on generic stock footage or arbitrary cuts.',
+        challenge: 'Long stretches of voiceover without visual purpose lose audience engagement when editors rely on generic footage.',
         approach:
-          'I build purposeful B-roll sequencing, deliberate visual rhythm, and layered soundscapes that sustain viewer curiosity while actively reinforcing the script.',
+          'Purposeful B-roll, pacing, and sound design help narration feel like a developing visual story.',
         keyTakeaway: 'Visuals that amplify words rather than just filling empty screen time.',
       },
       {
         number: '02',
         title: 'Complex Stories That Are Difficult to Follow',
         challenge:
-          'Investigative subjects frequently involve multiple people, overlapping timelines, technical records, and shifting locations that easily confuse audiences.',
+          'Timelines, multiple characters, conflicting reports, and historical events easily overwhelm viewers.',
         approach:
-          'I engineer custom maps, synchronized timelines, and clear evidence graphics that distill dense investigations into digestible, visually coherent narratives.',
+          'Maps, timelines, evidence graphics, and careful sequencing help make complicated information easier to understand.',
         keyTakeaway: 'Complex facts transformed into intuitive, memorable visual sequences.',
       },
       {
         number: '03',
-        title: 'Visuals That Lack Atmosphere',
+        title: 'Visuals Without Atmosphere',
         challenge:
-          'A mystery documentary loses its emotional impact when footage looks too bright, sterile, disjointed, or mismatched in tone.',
+          'Sterile stock footage and generic transitions break the immersion required for mystery content.',
         approach:
-          'I apply intentional visual selection, restrained motion graphics, archival color treatments, and immersive sound design to ground the film in authentic atmosphere.',
+          'Intentional imagery, restrained motion graphics, and cinematic finishing help establish the appropriate mood.',
         keyTakeaway: 'A cohesive, cinematic visual identity tuned to the mood of the mystery.',
       },
       {
         number: '04',
-        title: 'Editing That Fails to Support the Story',
-        challenge:
-          'Flashy transitions, fast jump-cuts, and aggressive effects cannot compensate for weak pacing or unclear storytelling.',
+        title: 'Effects Without Storytelling',
+        challenge: 'Transitions and visual effects cannot replace clear storytelling.',
         approach:
-          'Every editorial cut is dictated by narrative structure, voiceover inflection points, information hierarchy, and emotional weight.',
-        keyTakeaway: 'Restrained, story-first decision making where every cut has a purpose.',
+          'Editing decisions should support the narration, reveal relevant information, and maintain a coherent narrative progression.',
+        keyTakeaway: 'Technique in service of narrative progression rather than visual novelty.',
       },
     ],
   },
@@ -293,44 +325,44 @@ export const portfolioData: PortfolioData = {
     subheading:
       'Strong documentary editing is about more than what appears on screen. It is about choosing the right visual, at the right moment, for the right reason.',
     featuredCase: {
-      title: 'Scene Analysis — The Cold Open Transition',
-      context: 'Demonstration Case: The High Pass Mystery (Intro Demo 1 Breakdown)',
+      title: 'Scene Analysis — The Hollow Creek Case Cold Open',
+      context: 'Demonstration Case: The Hollow Creek Case (Intro Demo 2 Breakdown)',
       storytellingChallenge:
-        'Bridging 45 seconds of dense voiceover regarding contradictory eyewitness statements without losing tension or overwhelming the viewer with text.',
+        'Establishing 23 years of cold-case history in under 35 seconds without relying on static exposition or losing audience suspense.',
       creativeDecision:
-        'Instead of generic stock footage, the sequence is built around three synchronized visual layers: a desaturated 1982 topographic map, a slow optical punch-in on coordinate markers, and redacted field report clippings.',
+        'Anchor the narrative hook on a dual-phase contrast: starting with a tight, nostalgic macro push on a faded 1980 family polaroid, then jarring the viewer into the present via a sudden desk lamp switch revealing a dark forensic corkboard, subterranean coordinates, and red laser alignment vectors.',
       reasoning:
-        'Documentary audiences watch mystery content to solve an enigma. Giving them tangible, forensic-grade assets creates immersion and trust, while acoustic micro-pauses in the soundscape let key voiceover revelations land with weight.',
+        'Documentary viewers decide within the first 15 seconds whether a mystery is worth their time. Juxtaposing personal family innocence with clinical crime scene evidence builds visceral curiosity, while acoustic silence drops amplify the narrator’s delivery.',
       howVisualsSupportNarration:
-        'Every visual cut aligns with voiceover inflection points rather than arbitrary rhythmic beats, ensuring viewer cognitive focus remains locked to the investigative thesis.',
+        'Every visual cut matches the emotional inflection points of the voiceover rather than arbitrary tempo marks, directing the viewer’s cognitive focus directly to the anomaly.',
       keyframes: [
         {
-          timecode: '00:00 - 00:18',
-          label: 'The Narrative Anchor',
-          narrationPrompt: '"At 03:42 AM, the weather station logged its final anomalous reading..."',
-          editorialChoice: 'Slow 1.5% push on monochrome topographic elevation map. Avoid cutting away prematurely to let the isolated geographical context settle.',
-          soundCue: 'Low-frequency sub-rumble (42Hz) layered with vintage radio receiver squelch and biting wind audio.',
+          timecode: '00:00 - 00:08',
+          label: 'The Vintage Portrait Hook',
+          narrationPrompt: '"For 23 years, the Hollow Creek case was considered closed..."',
+          editorialChoice: 'Slow 1.5% macro push on a 1980 family portrait photograph, drawing focus toward the subject’s expression before introducing the case archive timestamp.',
+          soundCue: 'Sub-bass rumble (38Hz) blended with subtle analog tape flutter and muted vinyl crackle.',
         },
         {
-          timecode: '00:18 - 00:34',
-          label: 'The Contradiction Reveal',
-          narrationPrompt: '"The official report cited equipment failure. The handwritten log told a different story."',
-          editorialChoice: 'Hard match-cut from satellite contour to macro scan of handwritten logbook. Highlight marker animates across the discrepancies.',
-          soundCue: 'Paper friction swipe, mechanical typewriter return bell, and subtle riser drop.',
+          timecode: '00:08 - 00:16',
+          label: 'The Evidence Corkboard Reveal',
+          narrationPrompt: '"...until an archive record dated 1987 resurfaced..."',
+          editorialChoice: 'Hard cut under an anglepoise desk lamp to a sprawling detective corkboard covered with red pushpins, taut strings, and yellowed incident clippings.',
+          soundCue: 'Crisp desk lamp switch foley, paper rustle, and a sudden drop into deep room tone.',
         },
         {
-          timecode: '00:34 - 00:52',
-          label: 'The Geographical Isolation',
-          narrationPrompt: '"Between these two ridges lies a 14-mile dead zone where no emergency frequencies penetrate."',
-          editorialChoice: 'Isometric 3D elevation map tracks the ridgeline, rendering radio blindspot in translucent amber vector shading.',
-          soundCue: 'Abrupt drop of music bed into dead room silence, leaving only the narrator’s voice and a faint VHF static hum.',
+          timecode: '00:16 - 00:26',
+          label: 'The Discrepancy Split-Screen',
+          narrationPrompt: '"...containing coordinates that were never on the official case map."',
+          editorialChoice: 'Split-screen dual comparison: vintage polaroids juxtaposed against an excavated subterranean quadrant with red laser alignment crosshairs.',
+          soundCue: 'Optical focus snap, mechanical camera shutter click, and ascending harmonic tension drone.',
         },
         {
-          timecode: '00:52 - 01:10',
-          label: 'The Cold Open Climax',
-          narrationPrompt: '"What the search team discovered at dawn was not what they were prepared for."',
-          editorialChoice: 'Fast rhythmic cut sequence: three flash frames of archival equipment followed by black frame pause before title reveal.',
-          soundCue: 'Deep resonant boom impact with sustained sub-decay transitioning into main title thematic drone.',
+          timecode: '00:26 - 00:35',
+          label: 'The Climax & Title Sting',
+          narrationPrompt: '"What was buried beneath Hollow Creek was never meant to be documented."',
+          editorialChoice: 'Rapid succession of flash cuts showing handwritten diary coordinates, abruptly plunging into complete black before the main title card resolves.',
+          soundCue: 'Sub-harmonic boom impact with prolonged metallic acoustic decay leading into the title sting.',
         },
       ],
     },
@@ -338,95 +370,67 @@ export const portfolioData: PortfolioData = {
 
   services: {
     heading: 'Editing Built Around the Story.',
-    subheading: 'Specialized post-production capabilities tailored exclusively for high-end documentary creators and investigative channels.',
+    subheading: 'Three focused post-production categories tailored for high-end mystery and investigative documentary creators.',
     items: [
       {
         number: '01',
-        title: 'Cinematic Documentary Editing',
-        description: 'Narration-driven editing focused on pacing, structure, atmosphere, and visual storytelling.',
+        title: 'Documentary Editing',
+        description: 'Complete pacing and narrative structure tuned to your script, creating tension curves and retention-focused storytelling that keep viewers engaged from cold open to conclusion.',
         deliverables: [
-          'Story pacing tuned to script cadence',
-          'Cinematic tension and narrative breath control',
-          'Seamless integration of A-roll voiceover & narrative visuals',
+          'Complete pacing & narrative structure',
+          'Tension curve optimization',
+          'Retention-focused storytelling',
         ],
       },
       {
         number: '02',
-        title: 'Visual Storytelling & B-Roll',
-        description: 'Purposeful visual selection and sequencing that supports narration and makes complex ideas easier to understand.',
+        title: 'Motion Graphics & Evidence',
+        description: 'Specialized documentary motion graphics that make complex investigations intuitive, credible, and visually arresting.',
         deliverables: [
-          'High-intent B-roll curation & historical matching',
-          'Visual metaphors that reinforce unseen narrative points',
-          'Zero filler or repetitive stock montage',
+          'Visual timeline reconstruction',
+          'Map & satellite animation',
+          'Document analysis & evidence boards',
         ],
       },
       {
         number: '03',
-        title: 'Documentary Motion Graphics',
-        description: 'Understated, story-driven motion graphics that communicate information without overwhelming the documentary.',
+        title: 'Cinematic Finishing',
+        description: 'Immersive sound design, calibrated color grading, and comprehensive delivery optimization engineered for YouTube documentary standards.',
         deliverables: [
-          'Declassified document reveals & redactions',
-          'Subtle kinetic typography & quote treatments',
-          'Period-accurate graphic styles and texture integration',
-        ],
-      },
-      {
-        number: '04',
-        title: 'Maps, Timelines & Evidence Graphics',
-        description: 'Clear visual explanations of locations, chronology, relationships, and relevant evidence.',
-        deliverables: [
-          '3D topographic maps & search route plots',
-          'Interactive multi-perspective chronological timelines',
-          'Evidence board connections & forensic diagrams',
-        ],
-      },
-      {
-        number: '05',
-        title: 'Sound Design & Cinematic Finishing',
-        description: 'Sound layering, atmosphere, transitions, and finishing touches that help create a coherent documentary experience.',
-        deliverables: [
-          'Atmospheric room tone, foley & bespoke risers',
-          'Vocal cleanup, spectral de-noise & dialogue leveling',
-          'Cinematic tone-mapping, color grading & film-grain finishing',
+          'Sound design & ambient tension',
+          'Color grading & mood styling',
+          'YouTube delivery optimization',
         ],
       },
     ],
   },
 
   workflow: {
-    heading: 'A Clear Process. A Stronger Story.',
-    subheading: 'A disciplined four-stage pipeline designed to protect the integrity of your narrative from rough cut to final master.',
+    heading: 'From Script to Screen.',
+    subheading: 'A disciplined three-stage process from initial brief to final video delivery.',
     stages: [
       {
         step: '01',
-        name: 'DISCOVER',
-        tagline: 'Grounded in the script',
+        name: 'BRIEF',
+        tagline: 'Understand the direction',
         description:
-          'We begin by diving into your subject matter, voiceover narration, documentary research, audience expectations, and intended emotional tone.',
+          'Understand the script, narration, subject, and creative direction.',
         deliverable: 'Creative alignment, visual mood direction, and asset audit.',
       },
       {
         step: '02',
-        name: 'PLAN',
-        tagline: 'Architecting the visual structure',
+        name: 'EDIT',
+        tagline: 'Build the documentary',
         description:
-          'Before cutting, I map out visual pacing, identify key scenes requiring custom maps or motion graphics, and establish the evidence presentation strategy.',
-        deliverable: 'Visual beat sheet, motion graphics brief, and archival footage map.',
+          'Build the documentary using purposeful visuals, editing, motion graphics, and sound design.',
+        deliverable: 'Full assembly cut with integrated sound design and evidence graphics.',
       },
       {
         step: '03',
-        name: 'EDIT',
-        tagline: 'Building tension and clarity',
+        name: 'DELIVERY',
+        tagline: 'Review and finalize',
         description:
-          'I assemble the documentary with rigorous attention to pacing, narrative momentum, custom motion graphics, evidence graphics, and layered atmospheric sound design.',
-        deliverable: 'Full assembly cut with integrated sound design and preliminary graphics.',
-      },
-      {
-        step: '04',
-        name: 'REFINE',
-        tagline: 'Polishing every frame',
-        description:
-          'We review the cut together, fine-tune narrative pacing based on agreed feedback, and complete color grading, audio master mix, and final delivery.',
+          'Review the edit, address agreed feedback, and prepare the final video.',
         deliverable: '4K/1080p master export, project archive, and clean assets.',
       },
     ],
@@ -444,27 +448,17 @@ export const portfolioData: PortfolioData = {
         title: 'Atmosphere Through Restraint',
         body: 'True mystery does not come from gratuitous glitch effects or loud transitions. It comes from shadow, pacing, silence, and deliberate visual weight that lets the viewer absorb the gravity of the event.',
       },
-      {
-        title: 'Forensic Precision in Motion',
-        body: 'When displaying maps, timelines, or documents, clarity is paramount. Audiences need to feel like they are examining authentic artifacts alongside the investigator.',
-      },
-      {
-        title: 'Direct, Professional Collaboration',
-        body: 'Clear milestones, transparent communication, and respect for creator vision. No bloated agency layers—just direct collaboration with an editor who cares deeply about the story.',
-      },
     ],
     editorialPhilosophy: [
       'Pacing is an emotional tool, not a metric formula.',
       'Sound design does half the storytelling before a cut is even seen.',
-      'Complexity requires visual clarity, not decorative distraction.',
-      'Every documentary deserves a bespoke aesthetic, not a template.',
     ],
   },
 
   contact: {
     heading: 'Have a Story Worth Telling?',
-    subheading: 'Tell me about your documentary, the story you’re building, and where you need editing support.',
-    ctaButton: 'Discuss Your Project',
+    subheading: 'Tell me about your next documentary.',
+    ctaButton: 'DISCUSS YOUR PROJECT',
     directEmail: 'contact@vaibhavlabs.com',
     formInfo:
       'Fill out the project inquiry below or email directly. I respond to serious documentary inquiries within 24 to 48 hours.',

@@ -20,3 +20,11 @@ yarn-error.log*
 # OS files
 .DS_Store
 Thumbs.db
+
+# Large raw demo sources (web-ready MP4s are in public/videos)
+Demos Videos/
+
+# Agent scratch & local tooling
+scratch/
+scratch_prompt4.txt
+.agents/

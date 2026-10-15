@@ -12,29 +12,26 @@ export const Footer: React.FC = () => {
   };
 
   const navLinks = [
-    { label: 'Selected Work', href: '#work' },
-    { label: 'Editorial Reasoning', href: '#problems' },
-    { label: 'Anatomy of a Cut', href: '#breakdown' },
-    { label: 'Capabilities', href: '#services' },
-    { label: 'Pipeline', href: '#process' },
-    { label: 'Studio Manifesto', href: '#about' },
-    { label: 'Initiate Cut', href: '#contact' },
+    { label: 'WORK', href: '#work' },
+    { label: 'SERVICES', href: '#services' },
+    { label: 'PROCESS', href: '#process' },
+    { label: 'CONTACT', href: '#contact' },
   ];
 
   return (
     <footer
       aria-label="Studio Footer"
-      className="bg-[#050607] border-t border-[#F3F0E9]/15 pt-20 pb-12 text-[#A6A6A2] select-none"
+      className="bg-[#000000] border-t border-white/[0.14] pt-20 pb-12 text-[#9A9A9A] select-none"
     >
       <div className="w-full px-6 sm:px-8 lg:px-12">
         {/* Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[#F3F0E9]/10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/[0.1]">
           {/* Brand Info (6 cols) */}
           <div className="md:col-span-6 space-y-4">
-            <span className="font-display-brutal text-3xl font-extrabold text-[#F3F0E9] block tracking-tight">
+            <span className="font-editorial-headline text-3xl font-bold text-[#F3F0E9] block tracking-tight">
               {brand.name}
             </span>
-            <p className="font-sans-editorial text-sm text-[#A6A6A2] max-w-md leading-relaxed">
+            <p className="font-sans text-sm text-[#9A9A9A] max-w-md leading-relaxed font-light">
               Cinematic documentary video editing, purposeful visual storytelling, motion graphics, and atmospheric sound design for YouTube mystery and investigative creators.
             </p>
             <div className="font-mono-tech text-xs text-[#D9A45B] tracking-wider uppercase">
@@ -76,7 +73,7 @@ export const Footer: React.FC = () => {
                     className="hover:text-[#D9A45B] transition-colors inline-flex items-center gap-1.5"
                   >
                     <span>{item.label}</span>
-                    <ExternalLink className="w-3 h-3 text-[#A6A6A2]/60" />
+                    <ExternalLink className="w-3 h-3 text-[#9A9A9A]/60" />
                   </a>
                 </li>
               ))}
@@ -86,7 +83,7 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={scrollToTop}
-                className="inline-flex items-center gap-2 text-xs font-mono-tech text-[#A6A6A2] hover:text-[#F3F0E9] transition-colors border border-[#F3F0E9]/15 px-3 py-1.5 rounded-[1px]"
+                className="inline-flex items-center gap-2 text-xs font-mono-tech text-[#9A9A9A] hover:text-[#F3F0E9] transition-colors border border-white/[0.14] px-3 py-1.5 rounded-[1px]"
                 aria-label="Return to top of page"
               >
                 <ArrowUp className="w-3.5 h-3.5 text-[#D9A45B]" />
@@ -96,15 +93,15 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Monumental Brutalist Footer Wordmark */}
+        {/* Minimal Monumental Footer Wordmark */}
         <div className="pt-16 pb-8 overflow-hidden select-none">
-          <div className="font-display-brutal text-[14vw] font-extrabold uppercase text-[#F3F0E9]/[0.06] hover:text-[#D9A45B]/15 transition-colors leading-[0.75] tracking-[-0.06em] whitespace-nowrap text-center">
+          <div className="font-editorial-headline text-[13vw] font-bold uppercase text-[#F3F0E9]/[0.05] hover:text-[#D9A45B]/15 transition-colors leading-[0.75] tracking-[-0.05em] whitespace-nowrap text-center">
             VAIBHAV LABS
           </div>
         </div>
 
         {/* Footer Bottom Strip */}
-        <div className="pt-6 border-t border-[#F3F0E9]/[0.08] flex flex-col sm:flex-row items-center justify-between text-xs font-mono-tech text-[#A6A6A2]/60 gap-4">
+        <div className="pt-6 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between text-xs font-mono-tech text-[#9A9A9A]/60 gap-4">
           <div>
             © {new Date().getFullYear()} {brand.name}. ALL RIGHTS RESERVED.
           </div>

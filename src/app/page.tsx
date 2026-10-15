@@ -1,47 +1,45 @@
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
 import { SelectedWork } from '@/components/SelectedWork';
-import { ProblemsSolved } from '@/components/ProblemsSolved';
-import { EditingBreakdown } from '@/components/EditingBreakdown';
 import { Services } from '@/components/Services';
 import { Workflow } from '@/components/Workflow';
-import { About } from '@/components/About';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
+import { Preloader } from '@/components/Preloader';
+import { ScrollProgressBar } from '@/components/ScrollProgressBar';
+import { CustomCursor } from '@/components/CustomCursor';
+import { TextProtection } from '@/components/TextProtection';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#101112] text-[#F3F0E9] cinematic-vignette font-sans-editorial">
-      {/* 1. Navigation */}
+    <div className="min-h-screen bg-[#000000] text-[#F3F0E9] cinematic-vignette font-sans">
+      {/* 0. Cinematic Preloader, Scroll Scrub Timeline, Custom Focus Cursor & Text Protection */}
+      <Preloader />
+      <ScrollProgressBar />
+      <CustomCursor />
+      <TextProtection />
+
+      {/* Navigation */}
       <Navigation />
 
       <main id="main-content">
-        {/* 2. Hero */}
+        {/* 01. Hero */}
         <Hero />
 
-        {/* 3. Selected Work */}
+        {/* 02. Selected Work */}
         <SelectedWork />
 
-        {/* 4. Problems I Solve */}
-        <ProblemsSolved />
-
-        {/* 5. Editing Breakdown */}
-        <EditingBreakdown />
-
-        {/* 6. Services */}
+        {/* 03. Services */}
         <Services />
 
-        {/* 7. Workflow */}
+        {/* 04. How It Works */}
         <Workflow />
 
-        {/* 8. About VAIBHAV LABS */}
-        <About />
-
-        {/* 9. Contact */}
+        {/* 05. Contact */}
         <Contact />
       </main>
 
-      {/* 10. Footer */}
+      {/* 06. Footer */}
       <Footer />
     </div>
   );

@@ -2,32 +2,68 @@
 
 @layer base {
   :root {
-    --bg-noir: #070809;
-    --surface-noir: #0f1012;
-    --surface-elevated: #16181b;
+    --bg-black: #000000;
+    --bg-charcoal: #101112;
     --text-primary: #f3f0e9;
-    --text-muted: #8e9094;
+    --text-muted: #9a9a9a;
     --accent-amber: #d9a45b;
-    --accent-amber-glow: rgba(217, 164, 91, 0.25);
-    --border-hairline: rgba(243, 240, 233, 0.12);
+    --border-subtle: rgba(255, 255, 255, 0.14);
   }
 
   html {
     scroll-behavior: smooth;
-    background-color: #070809;
+    background-color: #000000;
     color: #f3f0e9;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
   }
 
   body {
-    background-color: #070809;
+    background-color: #000000;
     color: #f3f0e9;
     overflow-x: hidden;
-    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
   }
 
+  /* Globally disable text selection highlights */
   ::selection {
+    background: transparent;
+    color: inherit;
+  }
+
+  ::-moz-selection {
+    background: transparent;
+    color: inherit;
+  }
+
+  /* Allow inputs and textareas to be selected and edited normally */
+  input,
+  textarea,
+  select,
+  [contenteditable="true"] {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+  }
+
+  input::selection,
+  textarea::selection {
     background-color: #d9a45b;
-    color: #070809;
+    color: #000000;
+  }
+
+  img {
+    -webkit-user-drag: none;
+    user-drag: none;
   }
 
   :focus-visible {
@@ -36,9 +72,29 @@
   }
 }
 
+/* Custom Cinematic Focus Cursor (Active only on hover-capable fine pointer devices) */
+@media (hover: hover) and (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor [role="button"],
+  body.has-custom-cursor [data-cursor="view"] {
+    cursor: none;
+  }
+
+  body.has-custom-cursor input,
+  body.has-custom-cursor textarea,
+  body.has-custom-cursor select,
+  body.has-custom-cursor [contenteditable="true"] {
+    cursor: auto !important;
+  }
+}
+
+.font-editorial-headline,
 .font-display-brutal {
-  font-family: 'Syne', sans-serif;
-  letter-spacing: -0.04em;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.035em;
+  font-weight: 700;
 }
 
 .font-serif-editorial {
@@ -46,7 +102,7 @@
 }
 
 .font-sans-editorial {
-  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 .font-mono-tech {
