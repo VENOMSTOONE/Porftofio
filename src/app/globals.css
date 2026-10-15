@@ -154,3 +154,88 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* =========================================================================
+   Cinematic Refined Highlight for "Discuss a Project" Call-to-Action
+   Subtle yet attention-grabbing: rhythmic filmic breath + 5s anamorphic lens glint
+   ========================================================================= */
+@keyframes filmicPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(217, 164, 91, 0.25), 0 2px 8px rgba(0, 0, 0, 0.4);
+    border-color: rgba(217, 164, 91, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(217, 164, 91, 0.65), 0 0 18px rgba(217, 164, 91, 0.32), 0 2px 12px rgba(0, 0, 0, 0.55);
+    border-color: rgba(217, 164, 91, 0.9);
+  }
+}
+
+@keyframes anamorphicGlint {
+  0% {
+    transform: translateX(-160%) skewX(-20deg);
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  18% {
+    transform: translateX(260%) skewX(-20deg);
+    opacity: 1;
+  }
+  19%, 100% {
+    transform: translateX(260%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+.btn-discuss-highlight {
+  position: relative;
+  overflow: hidden;
+  animation: filmicPulse 4.2s ease-in-out infinite;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+.btn-discuss-highlight::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(217, 164, 91, 0.12) 36%,
+    rgba(255, 248, 225, 0.4) 50%,
+    rgba(217, 164, 91, 0.12) 64%,
+    transparent 80%
+  );
+  animation: anamorphicGlint 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+.btn-discuss-highlight:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 0 0 1px rgba(217, 164, 91, 0.85), 0 0 24px rgba(217, 164, 91, 0.5), 0 4px 16px rgba(0, 0, 0, 0.6);
+  border-color: rgba(217, 164, 91, 1);
+}
+
+.btn-discuss-highlight:active {
+  transform: translateY(0);
+}
+
+/* =========================================================================
+   Video Player Protection: Suppress Download Features & Controls
+   ========================================================================= */
+video::-internal-media-controls-download-button {
+  display: none !important;
+}
+
+video::-webkit-media-controls-download-button {
+  display: none !important;
+}
+
+video::-webkit-media-controls-enclosure {
+  overflow: hidden;
+}
+

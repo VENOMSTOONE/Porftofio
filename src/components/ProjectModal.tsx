@@ -116,6 +116,9 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                         src={project.videoUrl}
                         poster={project.posterUrl}
                         controls
+                        controlsList="nodownload noplaybackrate"
+                        disablePictureInPicture
+                        onContextMenu={(e) => e.preventDefault()}
                         autoPlay
                         playsInline
                         preload="auto"
@@ -123,7 +126,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                         onWaiting={() => setIsVideoBuffering(true)}
                         onCanPlay={() => setIsVideoBuffering(false)}
                         onPlaying={() => setIsVideoBuffering(false)}
-                        className="w-full h-full object-contain bg-black"
+                        className="w-full h-full object-contain bg-black select-none"
                       />
 
                       {/* Documentary Decryption / Buffering HUD */}

@@ -32,21 +32,6 @@ export const Hero: React.FC = () => {
         aria-hidden="true"
       />
 
-      {/* Top Telemetry Header Bar */}
-      <div className="w-full px-6 sm:px-8 lg:px-12 pt-2 pb-6 border-b border-white/[0.08]">
-        <div className="flex flex-wrap items-center justify-between gap-4 font-mono-tech text-[10px] sm:text-xs text-[#9A9A9A] uppercase tracking-widest">
-          <div className="flex items-center gap-3">
-            <span className="text-[#D9A45B] font-bold">[ POST-PRODUCTION DOSSIER ]</span>
-            <span className="hidden sm:inline">// SPEC: MYSTERY & INVESTIGATIVE DOCUMENTARY</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="hidden md:inline">FREQ: 124.30 MHZ</span>
-            <span className="text-[#F3F0E9]">COORD: 44°12'32"N · 71°18'44"W</span>
-            <span className="text-[#D9A45B]">REC: ACTIVE</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Monumental Typographic Showcase */}
       <div className="w-full px-6 sm:px-8 lg:px-12 py-10 lg:py-16">
         <motion.div
@@ -114,11 +99,11 @@ export const Hero: React.FC = () => {
               <a
                 href="#contact"
                 onClick={scrollTo('#contact')}
-                className="relative inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#101112] hover:bg-[#16181b] border border-white/[0.14] hover:border-[#D9A45B]/60 text-[#F3F0E9] font-mono-tech text-xs font-semibold uppercase tracking-widest transition-all rounded-[1px]"
+                className="btn-discuss-highlight group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#101112] hover:bg-[#181a1d] border border-[#D9A45B]/60 hover:border-[#D9A45B] text-[#F3F0E9] hover:text-[#D9A45B] font-mono-tech text-xs font-bold uppercase tracking-widest transition-all rounded-[1px]"
               >
-                <Crosshair className="w-3.5 h-3.5 text-[#D9A45B]" />
+                <Crosshair className="w-3.5 h-3.5 text-[#D9A45B] transition-transform duration-300 group-hover:rotate-90" />
                 <span>DISCUSS A PROJECT</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-[#9A9A9A]" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#D9A45B] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </a>
             </div>
           </motion.div>

@@ -313,7 +313,7 @@ export const Contact: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-3 py-5 bg-[#D9A45B] hover:bg-[#e5b36c] text-[#000000] font-mono-tech text-xs font-bold uppercase tracking-widest transition-colors shadow-2xl"
+                  className="btn-discuss-highlight w-full inline-flex items-center justify-center gap-3 py-5 bg-[#D9A45B] hover:bg-[#e5b36c] text-[#000000] font-mono-tech text-xs font-bold uppercase tracking-widest transition-colors shadow-2xl"
                 >
                   <Crosshair className="w-4 h-4" />
                   <span>DISCUSS YOUR PROJECT ↗</span>
